@@ -14,5 +14,35 @@ export default {
         }
     ],
     plugins: [typescript({ objectHashIgnoreUnknownHack: true })],
-    external: ['react', 'react-dom']
+    external: [
+        'react',
+        'react-dom',
+        'react-native',
+        '@fortawesome/fontawesome-svg-core',
+        '@fortawesome/free-solid-svg-icons/faTag',
+        '@fortawesome/free-solid-svg-icons/faTags',
+        '@fortawesome/free-solid-svg-icons/faBrain',
+        '@fortawesome/react-native-fontawesome',
+        '@fortawesome/free-solid-svg-icons/faChevronRight',
+        '@fortawesome/free-solid-svg-icons/faChevronLeft',
+        '@fortawesome/free-solid-svg-icons/faChevronUp',
+        '@fortawesome/free-solid-svg-icons/faChevronDown',
+        '@fortawesome/free-solid-svg-icons/faBed',
+        '@fortawesome/free-solid-svg-icons/faBedPulse',
+        '@fortawesome/free-solid-svg-icons/faHeartPulse',
+        '@fortawesome/free-solid-svg-icons/faBattery',
+        '@fortawesome/free-solid-svg-icons/faBell',
+        '@fortawesome/free-solid-svg-icons/faBook',
+        '@fortawesome/free-solid-svg-icons/faBox',
+        '@fortawesome/free-solid-svg-icons/faBoxArchive',
+        '@fortawesome/free-solid-svg-icons/faBriefcase',
+        '@fortawesome/free-solid-svg-icons/faCalendar',
+        '@fortawesome/free-solid-svg-icons/faCaretUp',
+        '@fortawesome/free-solid-svg-icons/faCaretDown',
+        '@fortawesome/free-solid-svg-icons/faCheck',
+        '@fortawesome/free-solid-svg-icons/faChartPie',
+        '@fortawesome/free-solid-svg-icons/faCircle',
+        '@fortawesome/free-solid-svg-icons/faCircleCheck',
+        '@fortawesome/free-regular-svg-icons/faCircle'
+    ]
 }
