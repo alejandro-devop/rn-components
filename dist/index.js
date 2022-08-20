@@ -54,11 +54,17 @@ Icon.defaultProps = {
     size: 24
 };
 
+var Text = function (_a) {
+    var children = _a.children, style = _a.style;
+    return React__default.default.createElement(reactNative.Text, { style: style }, children);
+};
+
 var registerIcons = function () {
     fontawesomeSvgCore.library.add(faTag.faTag, faBrain.faBrain, faTags.faTags, faChevronRight.faChevronRight, faChevronLeft.faChevronLeft, faChevronUp.faChevronUp, faChevronDown.faChevronDown, faBed.faBed, faBedPulse.faBedPulse, faHeartPulse.faHeartPulse, faBattery.faBattery, faBell.faBell, faBook.faBook, faBriefcase.faBriefcase, faBoxArchive.faBoxArchive, faBox.faBox, faCalendar.faCalendar, faCaretUp.faCaretUp, faCaretDown.faCaretDown, faCheck.faCheck, faChartPie.faChartPie, faCircle.faCircle, faCircleCheck.faCircleCheck);
 };
 
 exports.Button = Button;
 exports.Icon = Icon;
+exports.Text = Text;
 exports.registerIcons = registerIcons;
 //# sourceMappingURL=index.js.map
