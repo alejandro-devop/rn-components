@@ -171,6 +171,48 @@ var Text = function (_a) {
     return React__default.default.createElement(reactNative.Text, { style: style }, children);
 };
 
+var styles = function (_a) {
+    var params = _a.params, applyFor = _a.applyFor;
+    return ({
+        root: {
+            marginBottom: 10,
+            paddingHorizontal: 10
+        },
+        title: __assign({}, applyFor(params === null || params === void 0 ? void 0 : params.size, {
+            '1': {
+                fontSize: 32
+            },
+            '2': {
+                fontSize: 28
+            },
+            '3': {
+                fontSize: 24
+            },
+            '4': {
+                fontSize: 20
+            },
+            '5': {
+                fontSize: 16
+            },
+            '6': {
+                fontSize: 12
+            }
+        }))
+    });
+};
+
+var Title = function (_a) {
+    var children = _a.children, size = _a.size;
+    var styling = rnThemizer.useStyling(styles, {
+        size: size
+    });
+    return (React__default.default.createElement(reactNative.View, { style: styling.root },
+        React__default.default.createElement(reactNative.Text, { style: styling.title }, children)));
+};
+Title.defaultProps = {
+    size: '1'
+};
+
 var registerIcons = function () {
     fontawesomeSvgCore.library.add(faTag.faTag, faBrain.faBrain, faTags.faTags, faChevronRight.faChevronRight, faChevronLeft.faChevronLeft, faChevronUp.faChevronUp, faChevronDown.faChevronDown, faBed.faBed, faBedPulse.faBedPulse, faHeartPulse.faHeartPulse, faBattery.faBattery, faBell.faBell, faBook.faBook, faBriefcase.faBriefcase, faBoxArchive.faBoxArchive, faBox.faBox, faCalendar.faCalendar, faCaretUp.faCaretUp, faCaretDown.faCaretDown, faCheck.faCheck, faChartPie.faChartPie, faCircle.faCircle, faCircleCheck.faCircleCheck);
 };
@@ -178,5 +220,6 @@ var registerIcons = function () {
 exports.Button = Button;
 exports.Icon = Icon;
 exports.Text = Text;
+exports.Title = Title;
 exports.registerIcons = registerIcons;
 //# sourceMappingURL=index.js.map
