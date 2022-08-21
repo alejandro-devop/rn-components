@@ -18,6 +18,7 @@ export default {
         'react',
         'react-dom',
         'react-native',
+        '@alejandro.dev/rn-themizer',
         '@fortawesome/fontawesome-svg-core',
         '@fortawesome/free-solid-svg-icons/faTag',
         '@fortawesome/free-solid-svg-icons/faTags',

@@ -1,3 +1,4 @@
 import React from 'react';
-declare const Button: React.FC;
+import { ButtonProps } from './types';
+declare const Button: React.FC<ButtonProps>;
 export default Button;
