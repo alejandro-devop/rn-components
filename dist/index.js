@@ -62,81 +62,54 @@ var __assign = function() {
 };
 
 var styling = function (_a) {
-    var _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p;
+    var _b, _c, _d, _e, _f;
     var palette = _a.palette, params = _a.params, applyFor = _a.applyFor, valueFor = _a.valueFor;
+    /**
+     * Allows us to reuse the styles for the button
+     */
+    var buttonColor = valueFor(params === null || params === void 0 ? void 0 : params.color, {
+        primary: (_b = palette.buttons) === null || _b === void 0 ? void 0 : _b.primaryColor,
+        secondary: (_c = palette.buttons) === null || _c === void 0 ? void 0 : _c.secondaryColor,
+        success: palette.success,
+        warning: palette.warning,
+        danger: palette.danger,
+        info: palette.info,
+        _default: (_d = palette.buttons) === null || _d === void 0 ? void 0 : _d.default
+    });
     return {
-        root: __assign(__assign({ padding: 10, borderRadius: 5, marginHorizontal: 4 }, applyFor(params === null || params === void 0 ? void 0 : params.variant, {
+        icon: __assign({ marginHorizontal: 5 }, applyFor(params === null || params === void 0 ? void 0 : params.variant, {
+            default: {
+                color: buttonColor
+            },
+            solid: {
+                color: (_e = palette.buttons) === null || _e === void 0 ? void 0 : _e.textColor
+            },
+            outline: {
+                color: buttonColor
+            }
+        })),
+        root: __assign(__assign({ alignItems: 'center', borderRadius: (params === null || params === void 0 ? void 0 : params.rounded) ? 20 : 5, flexDirection: 'row', justifyContent: 'center', marginHorizontal: 4, padding: 10, paddingHorizontal: (params === null || params === void 0 ? void 0 : params.rounded) ? 20 : 10 }, applyFor(params === null || params === void 0 ? void 0 : params.variant, {
             default: {},
             solid: {
-                backgroundColor: valueFor(params === null || params === void 0 ? void 0 : params.color, {
-                    primary: (_b = palette.buttons) === null || _b === void 0 ? void 0 : _b.primaryColor,
-                    secondary: (_c = palette.buttons) === null || _c === void 0 ? void 0 : _c.secondaryColor,
-                    success: palette.success,
-                    warning: palette.warning,
-                    danger: palette.danger,
-                    info: palette.info,
-                    _default: (_d = palette.buttons) === null || _d === void 0 ? void 0 : _d.default
-                })
+                backgroundColor: buttonColor
             },
             outline: {
                 borderWidth: 2,
-                borderColor: valueFor(params === null || params === void 0 ? void 0 : params.color, {
-                    primary: (_e = palette.buttons) === null || _e === void 0 ? void 0 : _e.primaryColor,
-                    secondary: (_f = palette.buttons) === null || _f === void 0 ? void 0 : _f.secondaryColor,
-                    success: palette.success,
-                    warning: palette.warning,
-                    danger: palette.danger,
-                    info: palette.info,
-                    _default: (_g = palette.buttons) === null || _g === void 0 ? void 0 : _g.default
-                })
+                borderColor: buttonColor
             }
         })), { opacity: (params === null || params === void 0 ? void 0 : params.disabled) ? 0.4 : 1 }),
         text: __assign({ fontWeight: 'bold' }, applyFor(params === null || params === void 0 ? void 0 : params.variant, {
             default: {
-                color: valueFor(params === null || params === void 0 ? void 0 : params.color, {
-                    primary: (_h = palette.buttons) === null || _h === void 0 ? void 0 : _h.primaryColor,
-                    secondary: (_j = palette.buttons) === null || _j === void 0 ? void 0 : _j.secondaryColor,
-                    success: palette.success,
-                    warning: palette.warning,
-                    danger: palette.danger,
-                    info: palette.info,
-                    _default: (_k = palette.buttons) === null || _k === void 0 ? void 0 : _k.defaultTextColor
-                })
+                color: buttonColor
             },
             solid: {
-                color: (_l = palette.buttons) === null || _l === void 0 ? void 0 : _l.textColor
+                color: (_f = palette.buttons) === null || _f === void 0 ? void 0 : _f.textColor
             },
             outline: {
-                color: valueFor(params === null || params === void 0 ? void 0 : params.color, {
-                    primary: (_m = palette.buttons) === null || _m === void 0 ? void 0 : _m.primaryColor,
-                    secondary: (_o = palette.buttons) === null || _o === void 0 ? void 0 : _o.secondaryColor,
-                    success: palette.success,
-                    warning: palette.warning,
-                    danger: palette.danger,
-                    info: palette.info,
-                    _default: (_p = palette.buttons) === null || _p === void 0 ? void 0 : _p.defaultTextColor
-                })
+                color: buttonColor
             }
         }))
     };
-};
-
-var Button = function (_a) {
-    var children = _a.children, disabled = _a.disabled, onPress = _a.onPress, variant = _a.variant, color = _a.color;
-    var styling$1 = rnThemizer.useStyling(styling, {
-        disabled: disabled,
-        variant: variant,
-        color: color
-    });
-    if (disabled) {
-        return (React__default.default.createElement(reactNative.View, { style: styling$1.root },
-            React__default.default.createElement(reactNative.Text, { style: styling$1.text }, children)));
-    }
-    return (React__default.default.createElement(reactNative.TouchableOpacity, { onPress: onPress, style: styling$1.root },
-        React__default.default.createElement(reactNative.Text, { style: styling$1.text }, children)));
-};
-Button.defaultProps = {
-    variant: 'default'
 };
 
 /**
@@ -152,6 +125,38 @@ var Icon = function (_a) {
 };
 Icon.defaultProps = {
     size: 24
+};
+
+/**
+ * Renders a button component and allows the user to interacts with it.
+ * @author Alejandro Quiroz <alejandro.devop@gmail.com>
+ * @version 1.0.0
+ * @since 0.0.1
+ * @param param0
+ * @returns
+ */
+var Button = function (_a) {
+    var children = _a.children, disabled = _a.disabled, onPress = _a.onPress, iconPlacement = _a.iconPlacement, icon = _a.icon, rounded = _a.rounded, variant = _a.variant, color = _a.color;
+    var styling$1 = rnThemizer.useStyling(styling, {
+        disabled: disabled,
+        variant: variant,
+        color: color,
+        rounded: rounded
+    });
+    if (disabled) {
+        return (React__default.default.createElement(reactNative.View, { style: styling$1.root },
+            icon && iconPlacement === 'left' && React__default.default.createElement(Icon, { name: icon, style: styling$1.icon }),
+            React__default.default.createElement(reactNative.Text, { style: styling$1.text }, children),
+            icon && iconPlacement === 'right' && React__default.default.createElement(Icon, { name: icon, style: styling$1.icon })));
+    }
+    return (React__default.default.createElement(reactNative.TouchableOpacity, { onPress: onPress, style: styling$1.root },
+        icon && iconPlacement === 'left' && React__default.default.createElement(Icon, { name: icon, style: styling$1.icon }),
+        React__default.default.createElement(reactNative.Text, { style: styling$1.text }, children),
+        icon && iconPlacement === 'right' && React__default.default.createElement(Icon, { name: icon, style: styling$1.icon })));
+};
+Button.defaultProps = {
+    variant: 'default',
+    iconPlacement: 'right'
 };
 
 /**

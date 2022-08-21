@@ -13,5 +13,6 @@ export interface ButtonProps {
     iconPlacement?: ButtonPlacements
     size?: ButtonSizes
     variant?: ButtonVariants
+    rounded?: boolean
     onPress?: () => void
 }
