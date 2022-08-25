@@ -4,13 +4,13 @@ import { TitleProps } from './types'
 import { useStyling } from '@alejandro.dev/rn-themizer'
 import styles, { ParamsGiven, StyleGuide } from './styles'
 
-const Title: React.FC<TitleProps> = ({ children, size }) => {
+const Title: React.FC<TitleProps> = ({ children, size, style }) => {
     const styling = useStyling<StyleGuide, ParamsGiven>(styles, {
         size
     })
     return (
         <View style={styling.root}>
-            <Text style={styling.title}>{children}</Text>
+            <Text style={[styling.title, style]}>{children}</Text>
         </View>
     )
 }

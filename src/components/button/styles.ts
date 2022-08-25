@@ -21,7 +21,8 @@ const styling: StyleDefType<StyleGuide, ParamsGiven> = ({
     palette,
     params,
     applyFor,
-    valueFor
+    valueFor,
+    variables
 }) => {
     /**
      * Allows us to reuse the styles for the button
@@ -59,6 +60,7 @@ const styling: StyleDefType<StyleGuide, ParamsGiven> = ({
             marginHorizontal: 4,
             padding: 10,
             paddingHorizontal: params?.rounded ? 20 : 10,
+            marginBottom: variables?.buttons?.marginBottom,
             ...applyFor(params?.variant, {
                 default: {},
                 solid: {

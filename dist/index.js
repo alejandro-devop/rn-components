@@ -61,9 +61,9 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
-var styling = function (_a) {
-    var _b, _c, _d, _e, _f;
-    var palette = _a.palette, params = _a.params, applyFor = _a.applyFor, valueFor = _a.valueFor;
+var styling$1 = function (_a) {
+    var _b, _c, _d, _e, _f, _g;
+    var palette = _a.palette, params = _a.params, applyFor = _a.applyFor, valueFor = _a.valueFor, variables = _a.variables;
     /**
      * Allows us to reuse the styles for the button
      */
@@ -88,7 +88,7 @@ var styling = function (_a) {
                 color: buttonColor
             }
         })),
-        root: __assign(__assign({ alignItems: 'center', borderRadius: (params === null || params === void 0 ? void 0 : params.rounded) ? 20 : 5, flexDirection: 'row', justifyContent: 'center', marginHorizontal: 4, padding: 10, paddingHorizontal: (params === null || params === void 0 ? void 0 : params.rounded) ? 20 : 10 }, applyFor(params === null || params === void 0 ? void 0 : params.variant, {
+        root: __assign(__assign({ alignItems: 'center', borderRadius: (params === null || params === void 0 ? void 0 : params.rounded) ? 20 : 5, flexDirection: 'row', justifyContent: 'center', marginHorizontal: 4, padding: 10, paddingHorizontal: (params === null || params === void 0 ? void 0 : params.rounded) ? 20 : 10, marginBottom: (_f = variables === null || variables === void 0 ? void 0 : variables.buttons) === null || _f === void 0 ? void 0 : _f.marginBottom }, applyFor(params === null || params === void 0 ? void 0 : params.variant, {
             default: {},
             solid: {
                 backgroundColor: buttonColor
@@ -103,7 +103,7 @@ var styling = function (_a) {
                 color: buttonColor
             },
             solid: {
-                color: (_f = palette.buttons) === null || _f === void 0 ? void 0 : _f.textColor
+                color: (_g = palette.buttons) === null || _g === void 0 ? void 0 : _g.textColor
             },
             outline: {
                 color: buttonColor
@@ -137,22 +137,22 @@ Icon.defaultProps = {
  */
 var Button = function (_a) {
     var children = _a.children, disabled = _a.disabled, onPress = _a.onPress, iconPlacement = _a.iconPlacement, icon = _a.icon, rounded = _a.rounded, variant = _a.variant, color = _a.color;
-    var styling$1 = rnThemizer.useStyling(styling, {
+    var styling = rnThemizer.useStyling(styling$1, {
         disabled: disabled,
         variant: variant,
         color: color,
         rounded: rounded
     });
     if (disabled) {
-        return (React__default.default.createElement(reactNative.View, { style: styling$1.root },
-            icon && iconPlacement === 'left' && React__default.default.createElement(Icon, { name: icon, style: styling$1.icon }),
-            React__default.default.createElement(reactNative.Text, { style: styling$1.text }, children),
-            icon && iconPlacement === 'right' && React__default.default.createElement(Icon, { name: icon, style: styling$1.icon })));
+        return (React__default.default.createElement(reactNative.View, { style: styling.root },
+            icon && iconPlacement === 'left' && React__default.default.createElement(Icon, { name: icon, style: styling.icon }),
+            React__default.default.createElement(reactNative.Text, { style: styling.text }, children),
+            icon && iconPlacement === 'right' && React__default.default.createElement(Icon, { name: icon, style: styling.icon })));
     }
-    return (React__default.default.createElement(reactNative.TouchableOpacity, { onPress: onPress, style: styling$1.root },
-        icon && iconPlacement === 'left' && React__default.default.createElement(Icon, { name: icon, style: styling$1.icon }),
-        React__default.default.createElement(reactNative.Text, { style: styling$1.text }, children),
-        icon && iconPlacement === 'right' && React__default.default.createElement(Icon, { name: icon, style: styling$1.icon })));
+    return (React__default.default.createElement(reactNative.TouchableOpacity, { onPress: onPress, style: styling.root },
+        icon && iconPlacement === 'left' && React__default.default.createElement(Icon, { name: icon, style: styling.icon }),
+        React__default.default.createElement(reactNative.Text, { style: styling.text }, children),
+        icon && iconPlacement === 'right' && React__default.default.createElement(Icon, { name: icon, style: styling.icon })));
 };
 Button.defaultProps = {
     variant: 'default',
@@ -202,15 +202,76 @@ var styles = function (_a) {
 };
 
 var Title = function (_a) {
-    var children = _a.children, size = _a.size;
+    var children = _a.children, size = _a.size, style = _a.style;
     var styling = rnThemizer.useStyling(styles, {
         size: size
     });
     return (React__default.default.createElement(reactNative.View, { style: styling.root },
-        React__default.default.createElement(reactNative.Text, { style: styling.title }, children)));
+        React__default.default.createElement(reactNative.Text, { style: [styling.title, style] }, children)));
 };
 Title.defaultProps = {
     size: '1'
+};
+
+var styling = function (_a) {
+    var fromPalette = _a.fromPalette, fromVars = _a.fromVars, applyIf = _a.applyIf, params = _a.params, palette = _a.palette;
+    return ({
+        input: {
+            height: '100%',
+            fontSize: fromVars('textField.input.fontSize', 18),
+            paddingHorizontal: fromVars('textField.input.paddingHorizontal', 10)
+        },
+        inputWrapper: __assign({ borderWidth: fromVars('textField.inputWrapper.borderWidth', 1), borderRadius: fromVars('textField.inputWrapper.borderRadius', 5), borderColor: fromPalette('textField.borderColor', '#90a4ae'), height: fromVars('textField.inputWrapper.height', 40), backgroundColor: fromPalette('textField.inputWrapper.bgColor', '#FFF') }, applyIf(params === null || params === void 0 ? void 0 : params.focussed, {
+            borderWidth: fromVars('textField.inputWrapper.borderWidthFocussed', 2),
+            borderColor: fromPalette('primaryColor', '#90a4ae'),
+            shadowColor: fromPalette('primaryColor', '#90a4ae'),
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 4,
+            elevation: 5
+        })),
+        labelWrapper: {
+            marginBottom: 5,
+            paddingHorizontal: fromVars('textField.label.paddingHorizontal', 10)
+        },
+        label: __assign({ fontSize: fromVars('textField.label.fontSize', 18), fontWeight: fromVars('textField.label.fontWeight', '600'), color: palette === null || palette === void 0 ? void 0 : palette.primaryColor }, applyIf(params === null || params === void 0 ? void 0 : params.secondary, {
+            color: palette === null || palette === void 0 ? void 0 : palette.secondaryColor
+        })),
+        root: {
+            paddingHorizontal: fromVars('textField.root.paddingHorizontal', 18),
+            marginBottom: fromVars('textField.root.marginBottom', 18)
+        }
+    });
+};
+
+var TextField = function (_a) {
+    var _b;
+    var label = _a.label, onBlur = _a.onBlur, onChange = _a.onChange, name = _a.name, onFocus = _a.onFocus, placeholder = _a.placeholder, secondary = _a.secondary, value = _a.value;
+    var _c = React__default.default.useState(false), focussed = _c[0], setFocussed = _c[1];
+    var palette = rnThemizer.usePalette();
+    var styling$1 = rnThemizer.useStyling(styling, { focussed: focussed, secondary: secondary });
+    var handleFocussed = React__default.default.useCallback(function () {
+        setFocussed(true);
+        if (onFocus)
+            onFocus();
+    }, []);
+    var handleLostFocus = React__default.default.useCallback(function () {
+        setFocussed(false);
+        if (onBlur)
+            onBlur();
+    }, []);
+    var handleChange = function (text) {
+        if (onChange) {
+            onChange({ name: name, value: text });
+        }
+    };
+    return (React__default.default.createElement(reactNative.View, { style: styling$1.root },
+        React__default.default.createElement(reactNative.View, { style: styling$1.labelWrapper }, label && React__default.default.createElement(reactNative.Text, { style: styling$1.label }, label)),
+        React__default.default.createElement(reactNative.View, { style: styling$1.inputWrapper },
+            React__default.default.createElement(reactNative.TextInput, { style: styling$1.input, value: value, placeholder: placeholder, placeholderTextColor: (_b = palette.textField) === null || _b === void 0 ? void 0 : _b.placeholderColor, onFocus: handleFocussed, onBlur: handleLostFocus, onChangeText: handleChange }))));
 };
 
 var registerIcons = function () {
@@ -220,6 +281,7 @@ var registerIcons = function () {
 exports.Button = Button;
 exports.Icon = Icon;
 exports.Text = Text;
+exports.TextField = TextField;
 exports.Title = Title;
 exports.registerIcons = registerIcons;
 //# sourceMappingURL=index.js.map

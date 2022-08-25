@@ -1,0 +1,13 @@
+export interface TextFieldProps {
+    label?: string;
+    secondary?: boolean;
+    name?: string;
+    onBlur?: () => void;
+    onChange?: (eventInfo: {
+        name?: string;
+        value?: string;
+    }) => void;
+    onFocus?: () => void;
+    placeholder?: string;
+    value?: string;
+}
