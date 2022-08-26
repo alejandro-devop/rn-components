@@ -2,12 +2,16 @@ import { StyleDefType, TextStyle, ViewStyle } from '@alejandro.dev/rn-themizer'
 import { FontAwesomeIconStyle } from '@fortawesome/react-native-fontawesome'
 
 export type StyleGuide = {
+    actionButton: ViewStyle
+    actionIcon: FontAwesomeIconStyle
     input: ViewStyle
     inputWrapper: ViewStyle
+    inputRow: ViewStyle
     label: TextStyle
     labelWrapper: ViewStyle
     root: ViewStyle
     icon: FontAwesomeIconStyle
+    iconWrapper: ViewStyle
 }
 
 export type ParamsGiven = { focussed?: boolean; primary?: boolean; secondary?: boolean }
@@ -19,18 +23,41 @@ const styling: StyleDefType<StyleGuide, ParamsGiven> = ({
     params,
     palette
 }) => ({
-    icon: {
-        marginEnd: 10,
+    actionButton: {
+        marginLeft: 5,
+        height: fromVars('textField.inputWrapper.height', 40),
+        width: fromVars('textField.inputWrapper.height', 40),
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    actionIcon: {
         color: palette.primaryColor,
         ...applyIf(params?.secondary, {
             color: palette.secondaryColor
         })
     },
+    icon: {
+        color: '#FFF',
+        ...applyIf(params?.secondary, {
+            color: palette.secondaryColor
+        })
+    },
+    iconWrapper: {
+        backgroundColor: palette.primaryColor,
+        height: fromVars('textField.inputWrapper.height', 40),
+        width: fromVars('textField.inputWrapper.height', 40),
+        borderRadius: 100,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     input: {
         height: '100%',
         fontSize: fromVars('textField.input.fontSize', 18),
-        paddingHorizontal: fromVars('textField.input.paddingHorizontal', 10),
+        paddingHorizontal: fromVars('textField.input.paddingHorizontal', 5),
         flex: 1
+    },
+    inputRow: {
+        flexDirection: 'row'
     },
     inputWrapper: {
         alignItems: 'center',
@@ -39,6 +66,7 @@ const styling: StyleDefType<StyleGuide, ParamsGiven> = ({
         borderColor: fromPalette('textField.borderColor', '#90a4ae'),
         height: fromVars('textField.inputWrapper.height', 40),
         backgroundColor: fromPalette('textField.inputWrapper.bgColor', '#FFF'),
+        flex: 1,
         flexDirection: 'row',
         ...applyIf(params?.focussed, {
             borderWidth: fromVars('textField.inputWrapper.borderWidthFocussed', 2),

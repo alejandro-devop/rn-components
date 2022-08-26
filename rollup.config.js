@@ -44,6 +44,10 @@ export default {
         '@fortawesome/free-solid-svg-icons/faChartPie',
         '@fortawesome/free-solid-svg-icons/faCircle',
         '@fortawesome/free-solid-svg-icons/faCircleCheck',
-        '@fortawesome/free-regular-svg-icons/faCircle'
+        '@fortawesome/free-regular-svg-icons/faCircle',
+        '@fortawesome/free-solid-svg-icons/faLock',
+        '@fortawesome/free-solid-svg-icons/faUser',
+        '@fortawesome/free-solid-svg-icons/faEye',
+        '@fortawesome/free-solid-svg-icons/faEyeSlash'
     ]
 }

@@ -12,4 +12,7 @@ export interface TextFieldProps {
     placeholder?: string;
     value?: string;
     icon?: IconNameType;
+    actionIcon?: IconNameType;
+    onActionTriggered?: () => void;
+    isPassword?: boolean;
 }

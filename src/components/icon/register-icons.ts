@@ -22,6 +22,10 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons/faCheck'
 import { faChartPie } from '@fortawesome/free-solid-svg-icons/faChartPie'
 import { faCircle } from '@fortawesome/free-solid-svg-icons/faCircle'
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck'
+import { faLock } from '@fortawesome/free-solid-svg-icons/faLock'
+import { faUser } from '@fortawesome/free-solid-svg-icons/faUser'
+import { faEye } from '@fortawesome/free-solid-svg-icons/faEye'
+import { faEyeSlash } from '@fortawesome/free-solid-svg-icons/faEyeSlash'
 
 const registerIcons = () => {
     library.add(
@@ -47,7 +51,11 @@ const registerIcons = () => {
         faCheck,
         faChartPie,
         faCircle,
-        faCircleCheck
+        faCircleCheck,
+        faLock,
+        faUser,
+        faEye,
+        faEyeSlash
     )
 }
 

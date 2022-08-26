@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View, TextInput } from 'react-native'
+import { Text, View, TextInput, TouchableOpacity } from 'react-native'
 import styles, { ParamsGiven, StyleGuide } from './styles'
 import { useStyling, usePalette } from '@alejandro.dev/rn-themizer'
 import { TextFieldProps } from './types'
@@ -14,7 +14,10 @@ const TextField: React.FC<TextFieldProps> = ({
     onFocus,
     placeholder,
     secondary,
-    value
+    value,
+    actionIcon,
+    isPassword,
+    onActionTriggered
 }) => {
     const [focussed, setFocussed] = React.useState(false)
     const palette = usePalette()
@@ -41,17 +44,29 @@ const TextField: React.FC<TextFieldProps> = ({
             <View style={styling.labelWrapper}>
                 {label && <Text style={styling.label}>{label}</Text>}
             </View>
-            <View style={styling.inputWrapper}>
-                <TextInput
-                    style={styling.input}
-                    value={value}
-                    placeholder={placeholder}
-                    placeholderTextColor={palette.textField?.placeholderColor}
-                    onFocus={handleFocussed}
-                    onBlur={handleLostFocus}
-                    onChangeText={handleChange}
-                />
-                {icon && <Icon name={icon} style={styling.icon} />}
+            <View style={styling.inputRow}>
+                <View style={styling.inputWrapper}>
+                    {icon && (
+                        <View style={styling.iconWrapper}>
+                            <Icon name={icon} style={styling.icon} />
+                        </View>
+                    )}
+                    <TextInput
+                        secureTextEntry={isPassword}
+                        style={styling.input}
+                        value={value}
+                        placeholder={placeholder}
+                        placeholderTextColor={palette.textField?.placeholderColor}
+                        onFocus={handleFocussed}
+                        onBlur={handleLostFocus}
+                        onChangeText={handleChange}
+                    />
+                </View>
+                {actionIcon && (
+                    <TouchableOpacity style={styling.actionButton} onPress={onActionTriggered}>
+                        <Icon name={actionIcon} style={styling.actionIcon} />
+                    </TouchableOpacity>
+                )}
             </View>
         </View>
     )

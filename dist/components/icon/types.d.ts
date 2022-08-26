@@ -1,5 +1,5 @@
 import { FontAwesomeIconStyle } from '@fortawesome/react-native-fontawesome';
-export declare type IconNameType = 'brain' | 'tag' | 'tags' | 'chevron-right' | 'chevron-left' | 'chevron-up' | 'chevron-down' | 'bed' | 'bed-pulse' | 'heart-pulse' | 'battery' | 'bell' | 'book' | 'briefcase' | 'box-archive' | 'box' | 'calendar' | 'caret-up' | 'caret-down' | 'check' | 'chart-pie' | 'circle' | 'circle-check';
+export declare type IconNameType = 'brain' | 'tag' | 'tags' | 'chevron-right' | 'chevron-left' | 'chevron-up' | 'chevron-down' | 'bed' | 'bed-pulse' | 'heart-pulse' | 'battery' | 'bell' | 'book' | 'briefcase' | 'box-archive' | 'box' | 'calendar' | 'caret-up' | 'caret-down' | 'check' | 'chart-pie' | 'circle' | 'circle-check' | 'lock' | 'user' | 'eye' | 'eye-slash';
 export interface IconProps {
     name: IconNameType;
     size?: number;

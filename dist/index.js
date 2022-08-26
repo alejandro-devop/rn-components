@@ -30,6 +30,10 @@ var faCheck = require('@fortawesome/free-solid-svg-icons/faCheck');
 var faChartPie = require('@fortawesome/free-solid-svg-icons/faChartPie');
 var faCircle = require('@fortawesome/free-solid-svg-icons/faCircle');
 var faCircleCheck = require('@fortawesome/free-solid-svg-icons/faCircleCheck');
+var faLock = require('@fortawesome/free-solid-svg-icons/faLock');
+var faUser = require('@fortawesome/free-solid-svg-icons/faUser');
+var faEye = require('@fortawesome/free-solid-svg-icons/faEye');
+var faEyeSlash = require('@fortawesome/free-solid-svg-icons/faEyeSlash');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { default: e }; }
 
@@ -159,6 +163,104 @@ Button.defaultProps = {
     iconPlacement: 'right'
 };
 
+var styling = function (_a) {
+    var fromPalette = _a.fromPalette, fromVars = _a.fromVars, applyIf = _a.applyIf, params = _a.params, palette = _a.palette;
+    return ({
+        actionButton: {
+            marginLeft: 5,
+            height: fromVars('textField.inputWrapper.height', 40),
+            width: fromVars('textField.inputWrapper.height', 40),
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        actionIcon: __assign({ color: palette.primaryColor }, applyIf(params === null || params === void 0 ? void 0 : params.secondary, {
+            color: palette.secondaryColor
+        })),
+        icon: __assign({ color: '#FFF' }, applyIf(params === null || params === void 0 ? void 0 : params.secondary, {
+            color: palette.secondaryColor
+        })),
+        iconWrapper: {
+            backgroundColor: palette.primaryColor,
+            height: fromVars('textField.inputWrapper.height', 40),
+            width: fromVars('textField.inputWrapper.height', 40),
+            borderRadius: 100,
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        input: {
+            height: '100%',
+            fontSize: fromVars('textField.input.fontSize', 18),
+            paddingHorizontal: fromVars('textField.input.paddingHorizontal', 5),
+            flex: 1
+        },
+        inputRow: {
+            flexDirection: 'row'
+        },
+        inputWrapper: __assign({ alignItems: 'center', borderWidth: fromVars('textField.inputWrapper.borderWidth', 1), borderRadius: fromVars('textField.inputWrapper.borderRadius', 5), borderColor: fromPalette('textField.borderColor', '#90a4ae'), height: fromVars('textField.inputWrapper.height', 40), backgroundColor: fromPalette('textField.inputWrapper.bgColor', '#FFF'), flex: 1, flexDirection: 'row' }, applyIf(params === null || params === void 0 ? void 0 : params.focussed, {
+            borderWidth: fromVars('textField.inputWrapper.borderWidthFocussed', 2),
+            borderColor: fromPalette((params === null || params === void 0 ? void 0 : params.secondary) ? 'secondaryColor' : 'primaryColor', '#90a4ae'),
+            shadowColor: fromPalette((params === null || params === void 0 ? void 0 : params.secondary) ? 'secondaryColor' : 'primaryColor', '#90a4ae'),
+            shadowOffset: {
+                width: 0,
+                height: 2
+            },
+            shadowOpacity: 0.25,
+            shadowRadius: 4,
+            elevation: 5
+        })),
+        labelWrapper: {
+            marginBottom: 5,
+            paddingHorizontal: fromVars('textField.label.paddingHorizontal', 10)
+        },
+        label: __assign({ fontSize: fromVars('textField.label.fontSize', 18), fontWeight: fromVars('textField.label.fontWeight', '600'), color: palette === null || palette === void 0 ? void 0 : palette.primaryColor }, applyIf(params === null || params === void 0 ? void 0 : params.secondary, {
+            color: palette === null || palette === void 0 ? void 0 : palette.secondaryColor
+        })),
+        root: {
+            paddingHorizontal: fromVars('textField.root.paddingHorizontal', 18),
+            marginBottom: fromVars('textField.root.marginBottom', 18)
+        }
+    });
+};
+
+var TextField = function (_a) {
+    var _b;
+    var icon = _a.icon, label = _a.label, onBlur = _a.onBlur, onChange = _a.onChange, name = _a.name, onFocus = _a.onFocus, placeholder = _a.placeholder, secondary = _a.secondary, value = _a.value, actionIcon = _a.actionIcon, isPassword = _a.isPassword, onActionTriggered = _a.onActionTriggered;
+    var _c = React__default.default.useState(false), focussed = _c[0], setFocussed = _c[1];
+    var palette = rnThemizer.usePalette();
+    var styling$1 = rnThemizer.useStyling(styling, { focussed: focussed, secondary: secondary });
+    var handleFocussed = React__default.default.useCallback(function () {
+        setFocussed(true);
+        if (onFocus)
+            onFocus();
+    }, []);
+    var handleLostFocus = React__default.default.useCallback(function () {
+        setFocussed(false);
+        if (onBlur)
+            onBlur();
+    }, []);
+    var handleChange = function (text) {
+        if (onChange) {
+            onChange({ name: name, value: text });
+        }
+    };
+    return (React__default.default.createElement(reactNative.View, { style: styling$1.root },
+        React__default.default.createElement(reactNative.View, { style: styling$1.labelWrapper }, label && React__default.default.createElement(reactNative.Text, { style: styling$1.label }, label)),
+        React__default.default.createElement(reactNative.View, { style: styling$1.inputRow },
+            React__default.default.createElement(reactNative.View, { style: styling$1.inputWrapper },
+                icon && (React__default.default.createElement(reactNative.View, { style: styling$1.iconWrapper },
+                    React__default.default.createElement(Icon, { name: icon, style: styling$1.icon }))),
+                React__default.default.createElement(reactNative.TextInput, { secureTextEntry: isPassword, style: styling$1.input, value: value, placeholder: placeholder, placeholderTextColor: (_b = palette.textField) === null || _b === void 0 ? void 0 : _b.placeholderColor, onFocus: handleFocussed, onBlur: handleLostFocus, onChangeText: handleChange })),
+            actionIcon && (React__default.default.createElement(reactNative.TouchableOpacity, { style: styling$1.actionButton, onPress: onActionTriggered },
+                React__default.default.createElement(Icon, { name: actionIcon, style: styling$1.actionIcon }))))));
+};
+
+var PasswordField = function (_a) {
+    var label = _a.label;
+    var _b = React__default.default.useState(false), opened = _b[0], setOpened = _b[1];
+    var handleAction = function () { return setOpened(!opened); };
+    return (React__default.default.createElement(TextField, { label: label, icon: "lock", actionIcon: opened ? 'eye-slash' : 'eye', onActionTriggered: handleAction, isPassword: !opened }));
+};
+
 /**
  * Component to render the application texts
  * @author Alejandro Quiroz <alejandro.devop@gmail.com>
@@ -213,78 +315,13 @@ Title.defaultProps = {
     size: '1'
 };
 
-var styling = function (_a) {
-    var fromPalette = _a.fromPalette, fromVars = _a.fromVars, applyIf = _a.applyIf, params = _a.params, palette = _a.palette;
-    return ({
-        icon: __assign({ marginEnd: 10, color: palette.primaryColor }, applyIf(params === null || params === void 0 ? void 0 : params.secondary, {
-            color: palette.secondaryColor
-        })),
-        input: {
-            height: '100%',
-            fontSize: fromVars('textField.input.fontSize', 18),
-            paddingHorizontal: fromVars('textField.input.paddingHorizontal', 10),
-            flex: 1
-        },
-        inputWrapper: __assign({ alignItems: 'center', borderWidth: fromVars('textField.inputWrapper.borderWidth', 1), borderRadius: fromVars('textField.inputWrapper.borderRadius', 5), borderColor: fromPalette('textField.borderColor', '#90a4ae'), height: fromVars('textField.inputWrapper.height', 40), backgroundColor: fromPalette('textField.inputWrapper.bgColor', '#FFF'), flexDirection: 'row' }, applyIf(params === null || params === void 0 ? void 0 : params.focussed, {
-            borderWidth: fromVars('textField.inputWrapper.borderWidthFocussed', 2),
-            borderColor: fromPalette((params === null || params === void 0 ? void 0 : params.secondary) ? 'secondaryColor' : 'primaryColor', '#90a4ae'),
-            shadowColor: fromPalette((params === null || params === void 0 ? void 0 : params.secondary) ? 'secondaryColor' : 'primaryColor', '#90a4ae'),
-            shadowOffset: {
-                width: 0,
-                height: 2
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 4,
-            elevation: 5
-        })),
-        labelWrapper: {
-            marginBottom: 5,
-            paddingHorizontal: fromVars('textField.label.paddingHorizontal', 10)
-        },
-        label: __assign({ fontSize: fromVars('textField.label.fontSize', 18), fontWeight: fromVars('textField.label.fontWeight', '600'), color: palette === null || palette === void 0 ? void 0 : palette.primaryColor }, applyIf(params === null || params === void 0 ? void 0 : params.secondary, {
-            color: palette === null || palette === void 0 ? void 0 : palette.secondaryColor
-        })),
-        root: {
-            paddingHorizontal: fromVars('textField.root.paddingHorizontal', 18),
-            marginBottom: fromVars('textField.root.marginBottom', 18)
-        }
-    });
-};
-
-var TextField = function (_a) {
-    var _b;
-    var icon = _a.icon, label = _a.label, onBlur = _a.onBlur, onChange = _a.onChange, name = _a.name, onFocus = _a.onFocus, placeholder = _a.placeholder, secondary = _a.secondary, value = _a.value;
-    var _c = React__default.default.useState(false), focussed = _c[0], setFocussed = _c[1];
-    var palette = rnThemizer.usePalette();
-    var styling$1 = rnThemizer.useStyling(styling, { focussed: focussed, secondary: secondary });
-    var handleFocussed = React__default.default.useCallback(function () {
-        setFocussed(true);
-        if (onFocus)
-            onFocus();
-    }, []);
-    var handleLostFocus = React__default.default.useCallback(function () {
-        setFocussed(false);
-        if (onBlur)
-            onBlur();
-    }, []);
-    var handleChange = function (text) {
-        if (onChange) {
-            onChange({ name: name, value: text });
-        }
-    };
-    return (React__default.default.createElement(reactNative.View, { style: styling$1.root },
-        React__default.default.createElement(reactNative.View, { style: styling$1.labelWrapper }, label && React__default.default.createElement(reactNative.Text, { style: styling$1.label }, label)),
-        React__default.default.createElement(reactNative.View, { style: styling$1.inputWrapper },
-            React__default.default.createElement(reactNative.TextInput, { style: styling$1.input, value: value, placeholder: placeholder, placeholderTextColor: (_b = palette.textField) === null || _b === void 0 ? void 0 : _b.placeholderColor, onFocus: handleFocussed, onBlur: handleLostFocus, onChangeText: handleChange }),
-            icon && React__default.default.createElement(Icon, { name: icon, style: styling$1.icon }))));
-};
-
 var registerIcons = function () {
-    fontawesomeSvgCore.library.add(faTag.faTag, faBrain.faBrain, faTags.faTags, faChevronRight.faChevronRight, faChevronLeft.faChevronLeft, faChevronUp.faChevronUp, faChevronDown.faChevronDown, faBed.faBed, faBedPulse.faBedPulse, faHeartPulse.faHeartPulse, faBattery.faBattery, faBell.faBell, faBook.faBook, faBriefcase.faBriefcase, faBoxArchive.faBoxArchive, faBox.faBox, faCalendar.faCalendar, faCaretUp.faCaretUp, faCaretDown.faCaretDown, faCheck.faCheck, faChartPie.faChartPie, faCircle.faCircle, faCircleCheck.faCircleCheck);
+    fontawesomeSvgCore.library.add(faTag.faTag, faBrain.faBrain, faTags.faTags, faChevronRight.faChevronRight, faChevronLeft.faChevronLeft, faChevronUp.faChevronUp, faChevronDown.faChevronDown, faBed.faBed, faBedPulse.faBedPulse, faHeartPulse.faHeartPulse, faBattery.faBattery, faBell.faBell, faBook.faBook, faBriefcase.faBriefcase, faBoxArchive.faBoxArchive, faBox.faBox, faCalendar.faCalendar, faCaretUp.faCaretUp, faCaretDown.faCaretDown, faCheck.faCheck, faChartPie.faChartPie, faCircle.faCircle, faCircleCheck.faCircleCheck, faLock.faLock, faUser.faUser, faEye.faEye, faEyeSlash.faEyeSlash);
 };
 
 exports.Button = Button;
 exports.Icon = Icon;
+exports.PasswordField = PasswordField;
 exports.Text = Text;
 exports.TextField = TextField;
 exports.Title = Title;

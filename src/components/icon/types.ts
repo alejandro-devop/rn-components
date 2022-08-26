@@ -23,6 +23,10 @@ export type IconNameType =
     | 'chart-pie'
     | 'circle'
     | 'circle-check'
+    | 'lock'
+    | 'user'
+    | 'eye'
+    | 'eye-slash'
 export interface IconProps {
     name: IconNameType
     size?: number

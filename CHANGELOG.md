@@ -4,3 +4,4 @@
 - [added]: Button component with support for icon
 - [added]: Title component
 - [added]: TextField component
+- [added]: PasswordField component
