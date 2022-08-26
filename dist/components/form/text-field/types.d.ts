@@ -1,3 +1,4 @@
+import { IconNameType } from '../../icon/types';
 export interface TextFieldProps {
     label?: string;
     secondary?: boolean;
@@ -10,4 +11,5 @@ export interface TextFieldProps {
     onFocus?: () => void;
     placeholder?: string;
     value?: string;
+    icon?: IconNameType;
 }

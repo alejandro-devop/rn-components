@@ -216,15 +216,19 @@ Title.defaultProps = {
 var styling = function (_a) {
     var fromPalette = _a.fromPalette, fromVars = _a.fromVars, applyIf = _a.applyIf, params = _a.params, palette = _a.palette;
     return ({
+        icon: __assign({ marginEnd: 10, color: palette.primaryColor }, applyIf(params === null || params === void 0 ? void 0 : params.secondary, {
+            color: palette.secondaryColor
+        })),
         input: {
             height: '100%',
             fontSize: fromVars('textField.input.fontSize', 18),
-            paddingHorizontal: fromVars('textField.input.paddingHorizontal', 10)
+            paddingHorizontal: fromVars('textField.input.paddingHorizontal', 10),
+            flex: 1
         },
-        inputWrapper: __assign({ borderWidth: fromVars('textField.inputWrapper.borderWidth', 1), borderRadius: fromVars('textField.inputWrapper.borderRadius', 5), borderColor: fromPalette('textField.borderColor', '#90a4ae'), height: fromVars('textField.inputWrapper.height', 40), backgroundColor: fromPalette('textField.inputWrapper.bgColor', '#FFF') }, applyIf(params === null || params === void 0 ? void 0 : params.focussed, {
+        inputWrapper: __assign({ alignItems: 'center', borderWidth: fromVars('textField.inputWrapper.borderWidth', 1), borderRadius: fromVars('textField.inputWrapper.borderRadius', 5), borderColor: fromPalette('textField.borderColor', '#90a4ae'), height: fromVars('textField.inputWrapper.height', 40), backgroundColor: fromPalette('textField.inputWrapper.bgColor', '#FFF'), flexDirection: 'row' }, applyIf(params === null || params === void 0 ? void 0 : params.focussed, {
             borderWidth: fromVars('textField.inputWrapper.borderWidthFocussed', 2),
-            borderColor: fromPalette('primaryColor', '#90a4ae'),
-            shadowColor: fromPalette('primaryColor', '#90a4ae'),
+            borderColor: fromPalette((params === null || params === void 0 ? void 0 : params.secondary) ? 'secondaryColor' : 'primaryColor', '#90a4ae'),
+            shadowColor: fromPalette((params === null || params === void 0 ? void 0 : params.secondary) ? 'secondaryColor' : 'primaryColor', '#90a4ae'),
             shadowOffset: {
                 width: 0,
                 height: 2
@@ -249,7 +253,7 @@ var styling = function (_a) {
 
 var TextField = function (_a) {
     var _b;
-    var label = _a.label, onBlur = _a.onBlur, onChange = _a.onChange, name = _a.name, onFocus = _a.onFocus, placeholder = _a.placeholder, secondary = _a.secondary, value = _a.value;
+    var icon = _a.icon, label = _a.label, onBlur = _a.onBlur, onChange = _a.onChange, name = _a.name, onFocus = _a.onFocus, placeholder = _a.placeholder, secondary = _a.secondary, value = _a.value;
     var _c = React__default.default.useState(false), focussed = _c[0], setFocussed = _c[1];
     var palette = rnThemizer.usePalette();
     var styling$1 = rnThemizer.useStyling(styling, { focussed: focussed, secondary: secondary });
@@ -271,7 +275,8 @@ var TextField = function (_a) {
     return (React__default.default.createElement(reactNative.View, { style: styling$1.root },
         React__default.default.createElement(reactNative.View, { style: styling$1.labelWrapper }, label && React__default.default.createElement(reactNative.Text, { style: styling$1.label }, label)),
         React__default.default.createElement(reactNative.View, { style: styling$1.inputWrapper },
-            React__default.default.createElement(reactNative.TextInput, { style: styling$1.input, value: value, placeholder: placeholder, placeholderTextColor: (_b = palette.textField) === null || _b === void 0 ? void 0 : _b.placeholderColor, onFocus: handleFocussed, onBlur: handleLostFocus, onChangeText: handleChange }))));
+            React__default.default.createElement(reactNative.TextInput, { style: styling$1.input, value: value, placeholder: placeholder, placeholderTextColor: (_b = palette.textField) === null || _b === void 0 ? void 0 : _b.placeholderColor, onFocus: handleFocussed, onBlur: handleLostFocus, onChangeText: handleChange }),
+            icon && React__default.default.createElement(Icon, { name: icon, style: styling$1.icon }))));
 };
 
 var registerIcons = function () {

@@ -3,3 +3,4 @@
 - [added]: Text component
 - [added]: Button component with support for icon
 - [added]: Title component
+- [added]: TextField component

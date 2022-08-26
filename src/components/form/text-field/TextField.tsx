@@ -3,8 +3,10 @@ import { Text, View, TextInput } from 'react-native'
 import styles, { ParamsGiven, StyleGuide } from './styles'
 import { useStyling, usePalette } from '@alejandro.dev/rn-themizer'
 import { TextFieldProps } from './types'
+import Icon from '../../icon'
 
 const TextField: React.FC<TextFieldProps> = ({
+    icon,
     label,
     onBlur,
     onChange,
@@ -49,6 +51,7 @@ const TextField: React.FC<TextFieldProps> = ({
                     onBlur={handleLostFocus}
                     onChangeText={handleChange}
                 />
+                {icon && <Icon name={icon} style={styling.icon} />}
             </View>
         </View>
     )
