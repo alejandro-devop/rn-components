@@ -315,12 +315,18 @@ Title.defaultProps = {
     size: '1'
 };
 
+var Image = function (_a) {
+    var src = _a.src, style = _a.style;
+    return React__default.default.createElement(reactNative.Image, { source: src, style: style });
+};
+
 var registerIcons = function () {
     fontawesomeSvgCore.library.add(faTag.faTag, faBrain.faBrain, faTags.faTags, faChevronRight.faChevronRight, faChevronLeft.faChevronLeft, faChevronUp.faChevronUp, faChevronDown.faChevronDown, faBed.faBed, faBedPulse.faBedPulse, faHeartPulse.faHeartPulse, faBattery.faBattery, faBell.faBell, faBook.faBook, faBriefcase.faBriefcase, faBoxArchive.faBoxArchive, faBox.faBox, faCalendar.faCalendar, faCaretUp.faCaretUp, faCaretDown.faCaretDown, faCheck.faCheck, faChartPie.faChartPie, faCircle.faCircle, faCircleCheck.faCircleCheck, faLock.faLock, faUser.faUser, faEye.faEye, faEyeSlash.faEyeSlash);
 };
 
 exports.Button = Button;
 exports.Icon = Icon;
+exports.Image = Image;
 exports.PasswordField = PasswordField;
 exports.Text = Text;
 exports.TextField = TextField;

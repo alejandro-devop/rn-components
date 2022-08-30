@@ -5,3 +5,4 @@
 - [added]: Title component
 - [added]: TextField component
 - [added]: PasswordField component
+- [added]: Added image component

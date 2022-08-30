@@ -4,4 +4,5 @@ import PasswordField from './form/password-field';
 import Text from './text';
 import Title from './title';
 import TextField from './form/text-field';
-export { Button, Icon, PasswordField, Text, TextField, Title };
+import Image from './image';
+export { Button, Icon, PasswordField, Text, TextField, Title, Image };
