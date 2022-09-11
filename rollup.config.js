@@ -48,6 +48,11 @@ export default {
         '@fortawesome/free-solid-svg-icons/faLock',
         '@fortawesome/free-solid-svg-icons/faUser',
         '@fortawesome/free-solid-svg-icons/faEye',
-        '@fortawesome/free-solid-svg-icons/faEyeSlash'
+        '@fortawesome/free-solid-svg-icons/faEyeSlash',
+        '@fortawesome/free-solid-svg-icons/faEllipsisVertical',
+        '@fortawesome/free-solid-svg-icons/faSearch',
+        '@fortawesome/free-solid-svg-icons/faGlassWater',
+        '@fortawesome/free-solid-svg-icons/faClock',
+        '@fortawesome/free-solid-svg-icons/faPlay'
     ]
 }

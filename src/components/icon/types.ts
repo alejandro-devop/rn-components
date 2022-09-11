@@ -27,6 +27,11 @@ export type IconNameType =
     | 'user'
     | 'eye'
     | 'eye-slash'
+    | 'ellipsis-v'
+    | 'search'
+    | 'glass-water'
+    | 'clock'
+    | 'play'
 export interface IconProps {
     name: IconNameType
     size?: number

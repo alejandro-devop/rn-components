@@ -26,12 +26,18 @@ import { faLock } from '@fortawesome/free-solid-svg-icons/faLock'
 import { faUser } from '@fortawesome/free-solid-svg-icons/faUser'
 import { faEye } from '@fortawesome/free-solid-svg-icons/faEye'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons/faEyeSlash'
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons/faEllipsisVertical'
+import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
+import { faGlassWater } from '@fortawesome/free-solid-svg-icons/faGlassWater'
+import { faClock } from '@fortawesome/free-solid-svg-icons/faClock'
+import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay'
 
 const registerIcons = () => {
     library.add(
         faTag,
         faBrain,
         faTags,
+        faClock,
         faChevronRight,
         faChevronLeft,
         faChevronUp,
@@ -42,6 +48,7 @@ const registerIcons = () => {
         faBattery,
         faBell,
         faBook,
+        faGlassWater,
         faBriefcase,
         faBoxArchive,
         faBox,
@@ -55,7 +62,10 @@ const registerIcons = () => {
         faLock,
         faUser,
         faEye,
-        faEyeSlash
+        faEyeSlash,
+        faEllipsisVertical,
+        faSearch,
+        faPlay
     )
 }
 

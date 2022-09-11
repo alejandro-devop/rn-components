@@ -6,3 +6,8 @@
 - [added]: TextField component
 - [added]: PasswordField component
 - [added]: Added image component
+- [added]: faEllipsisVertical Icon
+- [added]: faSearch icon
+- [added]: faGlassWater icon
+- [added]: faClock icon
+- [added]: faPlay icon
