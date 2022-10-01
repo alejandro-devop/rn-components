@@ -101,6 +101,9 @@ var styling$1 = function (_a) {
         _default: (_d = palette.buttons) === null || _d === void 0 ? void 0 : _d.default
     });
     return {
+        loader: {
+            marginLeft: 10
+        },
         icon: __assign({ marginHorizontal: 5 }, applyFor(params === null || params === void 0 ? void 0 : params.variant, {
             default: {
                 color: buttonColor
@@ -160,13 +163,18 @@ Icon.defaultProps = {
  * @returns
  */
 var Button = function (_a) {
-    var children = _a.children, disabled = _a.disabled, onPress = _a.onPress, iconPlacement = _a.iconPlacement, icon = _a.icon, rounded = _a.rounded, variant = _a.variant, color = _a.color;
+    var children = _a.children, disabled = _a.disabled, onPress = _a.onPress, iconPlacement = _a.iconPlacement, icon = _a.icon, rounded = _a.rounded, variant = _a.variant, color = _a.color, loading = _a.loading, loadingText = _a.loadingText;
     var styling = rnThemizer.useStyling(styling$1, {
         disabled: disabled,
         variant: variant,
         color: color,
         rounded: rounded
     });
+    if (loading) {
+        return (React__default.default.createElement(reactNative.View, { style: styling.root },
+            loadingText && React__default.default.createElement(reactNative.Text, { style: styling.text }, loadingText),
+            React__default.default.createElement(reactNative.ActivityIndicator, { style: styling.loader })));
+    }
     if (disabled) {
         return (React__default.default.createElement(reactNative.View, { style: styling.root },
             icon && iconPlacement === 'left' && React__default.default.createElement(Icon, { name: icon, style: styling.icon }),

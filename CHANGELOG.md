@@ -13,3 +13,4 @@
 - [added]: faPlay icon
 - [added]: autoCapitalize prop to text input
 - [update]: Readme file
+- [added]: Support for loader on buttons

@@ -6,6 +6,7 @@ export type StyleGuide = {
     icon?: FontAwesomeIconStyle
     root: ViewStyle
     text: TextStyle
+    loader: ViewStyle
 }
 
 export type ParamsGiven = {
@@ -38,6 +39,9 @@ const styling: StyleDefType<StyleGuide, ParamsGiven> = ({
     })
 
     return {
+        loader: {
+            marginLeft: 10
+        },
         icon: {
             marginHorizontal: 5,
             ...applyFor(params?.variant, {

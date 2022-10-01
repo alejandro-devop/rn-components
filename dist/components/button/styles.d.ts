@@ -5,6 +5,7 @@ export declare type StyleGuide = {
     icon?: FontAwesomeIconStyle;
     root: ViewStyle;
     text: TextStyle;
+    loader: ViewStyle;
 };
 export declare type ParamsGiven = {
     disabled?: boolean;

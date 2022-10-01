@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, View, Text } from 'react-native'
+import { TouchableOpacity, View, Text, ActivityIndicator } from 'react-native'
 import { ButtonProps } from './types'
 import { useStyling } from '@alejandro.dev/rn-themizer'
 import styles, { ParamsGiven, StyleGuide } from './styles'
@@ -21,7 +21,9 @@ const Button: React.FC<ButtonProps> = ({
     icon,
     rounded,
     variant,
-    color
+    color,
+    loading,
+    loadingText
 }) => {
     const styling = useStyling<StyleGuide, ParamsGiven>(styles, {
         disabled,
@@ -29,6 +31,14 @@ const Button: React.FC<ButtonProps> = ({
         color,
         rounded
     })
+    if (loading) {
+        return (
+            <View style={styling.root}>
+                {loadingText && <Text style={styling.text}>{loadingText}</Text>}
+                <ActivityIndicator style={styling.loader} />
+            </View>
+        )
+    }
     if (disabled) {
         return (
             <View style={styling.root}>

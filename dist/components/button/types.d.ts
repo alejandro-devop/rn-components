@@ -14,4 +14,6 @@ export interface ButtonProps {
     variant?: ButtonVariants;
     rounded?: boolean;
     onPress?: () => void;
+    loading?: boolean;
+    loadingText?: string;
 }
