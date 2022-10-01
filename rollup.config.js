@@ -56,6 +56,8 @@ export default {
         '@fortawesome/free-solid-svg-icons/faPlay',
         '@fortawesome/free-solid-svg-icons/faTimes',
         '@fortawesome/free-solid-svg-icons/faRefresh',
-        '@fortawesome/free-solid-svg-icons/faEnvelope'
+        '@fortawesome/free-solid-svg-icons/faEnvelope',
+        '@fortawesome/free-solid-svg-icons/faCogs',
+        '@fortawesome/free-solid-svg-icons/faHome'
     ]
 }

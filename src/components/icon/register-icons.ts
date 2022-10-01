@@ -34,6 +34,8 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay'
 import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
 import { faRefresh } from '@fortawesome/free-solid-svg-icons/faRefresh'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope'
+import { faCogs } from '@fortawesome/free-solid-svg-icons/faCogs'
+import { faHome } from '@fortawesome/free-solid-svg-icons/faHome'
 
 const registerIcons = () => {
     library.add(
@@ -71,7 +73,9 @@ const registerIcons = () => {
         faPlay,
         faTimes,
         faRefresh,
-        faEnvelope
+        faEnvelope,
+        faCogs,
+        faHome
     )
 }
 

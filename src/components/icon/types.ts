@@ -35,6 +35,8 @@ export type IconNameType =
     | 'times'
     | 'refresh'
     | 'envelope'
+    | 'cogs'
+    | 'home'
 export interface IconProps {
     name: IconNameType
     size?: number

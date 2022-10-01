@@ -14,3 +14,4 @@
 - [added]: autoCapitalize prop to text input
 - [update]: Readme file
 - [added]: Support for loader on buttons
+- [added]: Cogs and home icon
