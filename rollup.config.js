@@ -53,6 +53,9 @@ export default {
         '@fortawesome/free-solid-svg-icons/faSearch',
         '@fortawesome/free-solid-svg-icons/faGlassWater',
         '@fortawesome/free-solid-svg-icons/faClock',
-        '@fortawesome/free-solid-svg-icons/faPlay'
+        '@fortawesome/free-solid-svg-icons/faPlay',
+        '@fortawesome/free-solid-svg-icons/faTimes',
+        '@fortawesome/free-solid-svg-icons/faRefresh',
+        '@fortawesome/free-solid-svg-icons/faEnvelope'
     ]
 }

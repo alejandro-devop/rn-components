@@ -31,6 +31,9 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch'
 import { faGlassWater } from '@fortawesome/free-solid-svg-icons/faGlassWater'
 import { faClock } from '@fortawesome/free-solid-svg-icons/faClock'
 import { faPlay } from '@fortawesome/free-solid-svg-icons/faPlay'
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
+import { faRefresh } from '@fortawesome/free-solid-svg-icons/faRefresh'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons/faEnvelope'
 
 const registerIcons = () => {
     library.add(
@@ -65,7 +68,10 @@ const registerIcons = () => {
         faEyeSlash,
         faEllipsisVertical,
         faSearch,
-        faPlay
+        faPlay,
+        faTimes,
+        faRefresh,
+        faEnvelope
     )
 }
 

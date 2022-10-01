@@ -17,7 +17,8 @@ const TextField: React.FC<TextFieldProps> = ({
     value,
     actionIcon,
     isPassword,
-    onActionTriggered
+    onActionTriggered,
+    ...otherProps
 }) => {
     const [focussed, setFocussed] = React.useState(false)
     const palette = usePalette()
@@ -60,6 +61,7 @@ const TextField: React.FC<TextFieldProps> = ({
                         onFocus={handleFocussed}
                         onBlur={handleLostFocus}
                         onChangeText={handleChange}
+                        {...otherProps}
                     />
                 </View>
                 {actionIcon && (

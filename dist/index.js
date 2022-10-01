@@ -39,6 +39,9 @@ var faSearch = require('@fortawesome/free-solid-svg-icons/faSearch');
 var faGlassWater = require('@fortawesome/free-solid-svg-icons/faGlassWater');
 var faClock = require('@fortawesome/free-solid-svg-icons/faClock');
 var faPlay = require('@fortawesome/free-solid-svg-icons/faPlay');
+var faTimes = require('@fortawesome/free-solid-svg-icons/faTimes');
+var faRefresh = require('@fortawesome/free-solid-svg-icons/faRefresh');
+var faEnvelope = require('@fortawesome/free-solid-svg-icons/faEnvelope');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { default: e }; }
 
@@ -69,6 +72,18 @@ var __assign = function() {
     };
     return __assign.apply(this, arguments);
 };
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
 
 var styling$1 = function (_a) {
     var _b, _c, _d, _e, _f, _g;
@@ -229,7 +244,7 @@ var styling = function (_a) {
 
 var TextField = function (_a) {
     var _b;
-    var icon = _a.icon, label = _a.label, onBlur = _a.onBlur, onChange = _a.onChange, name = _a.name, onFocus = _a.onFocus, placeholder = _a.placeholder, secondary = _a.secondary, value = _a.value, actionIcon = _a.actionIcon, isPassword = _a.isPassword, onActionTriggered = _a.onActionTriggered;
+    var icon = _a.icon, label = _a.label, onBlur = _a.onBlur, onChange = _a.onChange, name = _a.name, onFocus = _a.onFocus, placeholder = _a.placeholder, secondary = _a.secondary, value = _a.value, actionIcon = _a.actionIcon, isPassword = _a.isPassword, onActionTriggered = _a.onActionTriggered, otherProps = __rest(_a, ["icon", "label", "onBlur", "onChange", "name", "onFocus", "placeholder", "secondary", "value", "actionIcon", "isPassword", "onActionTriggered"]);
     var _c = React__default.default.useState(false), focussed = _c[0], setFocussed = _c[1];
     var palette = rnThemizer.usePalette();
     var styling$1 = rnThemizer.useStyling(styling, { focussed: focussed, secondary: secondary });
@@ -254,16 +269,16 @@ var TextField = function (_a) {
             React__default.default.createElement(reactNative.View, { style: styling$1.inputWrapper },
                 icon && (React__default.default.createElement(reactNative.View, { style: styling$1.iconWrapper },
                     React__default.default.createElement(Icon, { name: icon, style: styling$1.icon }))),
-                React__default.default.createElement(reactNative.TextInput, { secureTextEntry: isPassword, style: styling$1.input, value: value, placeholder: placeholder, placeholderTextColor: (_b = palette.textField) === null || _b === void 0 ? void 0 : _b.placeholderColor, onFocus: handleFocussed, onBlur: handleLostFocus, onChangeText: handleChange })),
+                React__default.default.createElement(reactNative.TextInput, __assign({ secureTextEntry: isPassword, style: styling$1.input, value: value, placeholder: placeholder, placeholderTextColor: (_b = palette.textField) === null || _b === void 0 ? void 0 : _b.placeholderColor, onFocus: handleFocussed, onBlur: handleLostFocus, onChangeText: handleChange }, otherProps))),
             actionIcon && (React__default.default.createElement(reactNative.TouchableOpacity, { style: styling$1.actionButton, onPress: onActionTriggered },
                 React__default.default.createElement(Icon, { name: actionIcon, style: styling$1.actionIcon }))))));
 };
 
 var PasswordField = function (_a) {
-    var label = _a.label;
+    var label = _a.label, otherProps = __rest(_a, ["label"]);
     var _b = React__default.default.useState(false), opened = _b[0], setOpened = _b[1];
     var handleAction = function () { return setOpened(!opened); };
-    return (React__default.default.createElement(TextField, { label: label, icon: "lock", actionIcon: opened ? 'eye-slash' : 'eye', onActionTriggered: handleAction, isPassword: !opened }));
+    return (React__default.default.createElement(TextField, __assign({ label: label, icon: "lock", actionIcon: opened ? 'eye-slash' : 'eye', onActionTriggered: handleAction, isPassword: !opened }, otherProps)));
 };
 
 /**
@@ -326,7 +341,7 @@ var Image = function (_a) {
 };
 
 var registerIcons = function () {
-    fontawesomeSvgCore.library.add(faTag.faTag, faBrain.faBrain, faTags.faTags, faClock.faClock, faChevronRight.faChevronRight, faChevronLeft.faChevronLeft, faChevronUp.faChevronUp, faChevronDown.faChevronDown, faBed.faBed, faBedPulse.faBedPulse, faHeartPulse.faHeartPulse, faBattery.faBattery, faBell.faBell, faBook.faBook, faGlassWater.faGlassWater, faBriefcase.faBriefcase, faBoxArchive.faBoxArchive, faBox.faBox, faCalendar.faCalendar, faCaretUp.faCaretUp, faCaretDown.faCaretDown, faCheck.faCheck, faChartPie.faChartPie, faCircle.faCircle, faCircleCheck.faCircleCheck, faLock.faLock, faUser.faUser, faEye.faEye, faEyeSlash.faEyeSlash, faEllipsisVertical.faEllipsisVertical, faSearch.faSearch, faPlay.faPlay);
+    fontawesomeSvgCore.library.add(faTag.faTag, faBrain.faBrain, faTags.faTags, faClock.faClock, faChevronRight.faChevronRight, faChevronLeft.faChevronLeft, faChevronUp.faChevronUp, faChevronDown.faChevronDown, faBed.faBed, faBedPulse.faBedPulse, faHeartPulse.faHeartPulse, faBattery.faBattery, faBell.faBell, faBook.faBook, faGlassWater.faGlassWater, faBriefcase.faBriefcase, faBoxArchive.faBoxArchive, faBox.faBox, faCalendar.faCalendar, faCaretUp.faCaretUp, faCaretDown.faCaretDown, faCheck.faCheck, faChartPie.faChartPie, faCircle.faCircle, faCircleCheck.faCircleCheck, faLock.faLock, faUser.faUser, faEye.faEye, faEyeSlash.faEyeSlash, faEllipsisVertical.faEllipsisVertical, faSearch.faSearch, faPlay.faPlay, faTimes.faTimes, faRefresh.faRefresh, faEnvelope.faEnvelope);
 };
 
 exports.Button = Button;

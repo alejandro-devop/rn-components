@@ -32,6 +32,9 @@ export type IconNameType =
     | 'glass-water'
     | 'clock'
     | 'play'
+    | 'times'
+    | 'refresh'
+    | 'envelope'
 export interface IconProps {
     name: IconNameType
     size?: number

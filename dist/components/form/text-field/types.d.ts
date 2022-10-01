@@ -15,4 +15,5 @@ export interface TextFieldProps {
     actionIcon?: IconNameType;
     onActionTriggered?: () => void;
     isPassword?: boolean;
+    autoCapitalize?: 'characters' | 'words' | 'sentences' | 'none';
 }
