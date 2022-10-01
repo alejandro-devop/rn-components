@@ -1,8 +1,17 @@
-# @triko-app/hooks
-Provides hooks for triko application
-* [title](#title)
+# @alejandro.dev/rn-components
+Library for react native components using @alejandro.dev/rn-themizer theme provider
 
-### title
+### Components
+* [Button](#button)
+* [Checkbox field](#checkbox-field)
+* [Password field](#password-field)
+* [Text field](#text-field)
+* [Icon](#icon)
+* [Image](#image)
+* [Text](#text)
+* [Title](#title)
+
+### Button
 Description...
 
 ```ts
@@ -28,17 +37,17 @@ Description...
 #### Todos
 - [ ] [Avatar](https://github.com/alejandro-devop/rn-components/issues/1)
 - [ ] [Badge](https://github.com/alejandro-devop/rn-components/issues/2)
-- [ ] [Button](https://github.com/alejandro-devop/rn-components/issues/3)
+- [x] [Button](https://github.com/alejandro-devop/rn-components/issues/3)
 - [ ] [Card](https://github.com/alejandro-devop/rn-components/issues/4)
-- [ ] [Checkbox](https://github.com/alejandro-devop/rn-components/issues/5)
+- [x] [Checkbox](https://github.com/alejandro-devop/rn-components/issues/5)
 - [ ] [Chip](https://github.com/alejandro-devop/rn-components/issues/6)
 - [ ] [Dialog](https://github.com/alejandro-devop/rn-components/issues/7)
 - [ ] [Divider](https://github.com/alejandro-devop/rn-components/issues/8)
 - [ ] [Drawer](https://github.com/alejandro-devop/rn-components/issues/9)
 - [ ] [Fab](https://github.com/alejandro-devop/rn-components/issues/10)
-- [ ] [Icon](https://github.com/alejandro-devop/rn-components/issues/11)
+- [x] [Icon](https://github.com/alejandro-devop/rn-components/issues/11)
 - [ ] [IconButton](https://github.com/alejandro-devop/rn-components/issues/12)
-- [ ] [Input](https://github.com/alejandro-devop/rn-components/issues/13)
+- [x] [TextField](https://github.com/alejandro-devop/rn-components/issues/13)
 - [ ] [List](https://github.com/alejandro-devop/rn-components/issues/14)
 - [ ] [SearchBar](https://github.com/alejandro-devop/rn-components/issues/15)
 - [ ] [Select](https://github.com/alejandro-devop/rn-components/issues/16)
@@ -46,6 +55,6 @@ Description...
 - [ ] [Skeleton](https://github.com/alejandro-devop/rn-components/issues/18)
 - [ ] [Switch](https://github.com/alejandro-devop/rn-components/issues/19)
 - [ ] [Tab](https://github.com/alejandro-devop/rn-components/issues/20)
-- [ ] [Text](https://github.com/alejandro-devop/rn-components/issues/21)
-- [ ] [Title](https://github.com/alejandro-devop/rn-components/issues/22)
+- [x] [Text](https://github.com/alejandro-devop/rn-components/issues/21)
+- [x] [Title](https://github.com/alejandro-devop/rn-components/issues/22)
 - [ ] [Tooltip](https://github.com/alejandro-devop/rn-components/issues/23)

@@ -12,3 +12,4 @@
 - [added]: faClock icon
 - [added]: faPlay icon
 - [added]: autoCapitalize prop to text input
+- [update]: Readme file
