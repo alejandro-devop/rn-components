@@ -37,6 +37,7 @@ export type IconNameType =
     | 'envelope'
     | 'cogs'
     | 'home'
+    | 'add'
 export interface IconProps {
     name: IconNameType
     size?: number

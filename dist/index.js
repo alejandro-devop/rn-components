@@ -44,6 +44,7 @@ var faRefresh = require('@fortawesome/free-solid-svg-icons/faRefresh');
 var faEnvelope = require('@fortawesome/free-solid-svg-icons/faEnvelope');
 var faCogs = require('@fortawesome/free-solid-svg-icons/faCogs');
 var faHome = require('@fortawesome/free-solid-svg-icons/faHome');
+var faAdd = require('@fortawesome/free-solid-svg-icons/faAdd');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { default: e }; }
 
@@ -303,7 +304,7 @@ var Text = function (_a) {
     return React__default.default.createElement(reactNative.Text, { style: style }, children);
 };
 
-var styles = function (_a) {
+var styles$1 = function (_a) {
     var params = _a.params, applyFor = _a.applyFor;
     return ({
         root: {
@@ -335,7 +336,7 @@ var styles = function (_a) {
 
 var Title = function (_a) {
     var children = _a.children, size = _a.size, style = _a.style;
-    var styling = rnThemizer.useStyling(styles, {
+    var styling = rnThemizer.useStyling(styles$1, {
         size: size
     });
     return (React__default.default.createElement(reactNative.View, { style: styling.root },
@@ -350,12 +351,61 @@ var Image = function (_a) {
     return React__default.default.createElement(reactNative.Image, { source: src, style: style });
 };
 
+var styles = function (_a) {
+    var _b;
+    var params = _a.params, size = _a.size, palette = _a.palette, applyFor = _a.applyFor;
+    return ({
+        icon: __assign({}, applyFor(params === null || params === void 0 ? void 0 : params.variant, {
+            primary: {
+                color: '#FFF'
+            },
+            secondary: {
+                color: '#FFF'
+            }
+        })),
+        root: __assign(__assign({ justifyContent: 'center', alignItems: 'center', borderRadius: 100, backgroundColor: (_b = palette.buttons) === null || _b === void 0 ? void 0 : _b.default }, applyFor(params === null || params === void 0 ? void 0 : params.size, {
+            sm: __assign({}, size(35)),
+            md: __assign({}, size(50)),
+            lg: __assign({}, size(60))
+        })), applyFor(params === null || params === void 0 ? void 0 : params.variant, {
+            primary: {
+                backgroundColor: palette.primaryColor
+            },
+            secondary: {
+                backgroundColor: palette.secondaryColor
+            }
+        }))
+    });
+};
+
+var IconButton = function (_a) {
+    var icon = _a.icon, variant = _a.variant, size = _a.size, onPress = _a.onPress;
+    var styling = rnThemizer.useStyling(styles, {
+        variant: variant,
+        size: size
+    });
+    var iconSize = React__default.default.useMemo(function () {
+        return {
+            sm: 30,
+            md: 35,
+            lg: 40
+        }[size || 'md'];
+    }, [size]);
+    return (React__default.default.createElement(reactNative.TouchableOpacity, { style: styling.root, onPress: onPress },
+        React__default.default.createElement(Icon, { name: icon, style: styling.icon, size: iconSize })));
+};
+IconButton.defaultProps = {
+    variant: 'default',
+    size: 'md'
+};
+
 var registerIcons = function () {
-    fontawesomeSvgCore.library.add(faTag.faTag, faBrain.faBrain, faTags.faTags, faClock.faClock, faChevronRight.faChevronRight, faChevronLeft.faChevronLeft, faChevronUp.faChevronUp, faChevronDown.faChevronDown, faBed.faBed, faBedPulse.faBedPulse, faHeartPulse.faHeartPulse, faBattery.faBattery, faBell.faBell, faBook.faBook, faGlassWater.faGlassWater, faBriefcase.faBriefcase, faBoxArchive.faBoxArchive, faBox.faBox, faCalendar.faCalendar, faCaretUp.faCaretUp, faCaretDown.faCaretDown, faCheck.faCheck, faChartPie.faChartPie, faCircle.faCircle, faCircleCheck.faCircleCheck, faLock.faLock, faUser.faUser, faEye.faEye, faEyeSlash.faEyeSlash, faEllipsisVertical.faEllipsisVertical, faSearch.faSearch, faPlay.faPlay, faTimes.faTimes, faRefresh.faRefresh, faEnvelope.faEnvelope, faCogs.faCogs, faHome.faHome);
+    fontawesomeSvgCore.library.add(faTag.faTag, faBrain.faBrain, faAdd.faAdd, faTags.faTags, faClock.faClock, faChevronRight.faChevronRight, faChevronLeft.faChevronLeft, faChevronUp.faChevronUp, faChevronDown.faChevronDown, faBed.faBed, faBedPulse.faBedPulse, faHeartPulse.faHeartPulse, faBattery.faBattery, faBell.faBell, faBook.faBook, faGlassWater.faGlassWater, faBriefcase.faBriefcase, faBoxArchive.faBoxArchive, faBox.faBox, faCalendar.faCalendar, faCaretUp.faCaretUp, faCaretDown.faCaretDown, faCheck.faCheck, faChartPie.faChartPie, faCircle.faCircle, faCircleCheck.faCircleCheck, faLock.faLock, faUser.faUser, faEye.faEye, faEyeSlash.faEyeSlash, faEllipsisVertical.faEllipsisVertical, faSearch.faSearch, faPlay.faPlay, faTimes.faTimes, faRefresh.faRefresh, faEnvelope.faEnvelope, faCogs.faCogs, faHome.faHome);
 };
 
 exports.Button = Button;
 exports.Icon = Icon;
+exports.IconButton = IconButton;
 exports.Image = Image;
 exports.PasswordField = PasswordField;
 exports.Text = Text;
