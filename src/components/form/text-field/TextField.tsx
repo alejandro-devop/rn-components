@@ -18,6 +18,8 @@ const TextField: React.FC<TextFieldProps> = ({
     actionIcon,
     isPassword,
     onActionTriggered,
+    onlyMask,
+    onPress,
     ...otherProps
 }) => {
     const [focussed, setFocussed] = React.useState(false)
@@ -39,31 +41,35 @@ const TextField: React.FC<TextFieldProps> = ({
             onChange({ name, value: text })
         }
     }
-
+    const WrapperComponent: any = onlyMask && onPress ? TouchableOpacity : View
     return (
         <View style={styling.root}>
             <View style={styling.labelWrapper}>
                 {label && <Text style={styling.label}>{label}</Text>}
             </View>
             <View style={styling.inputRow}>
-                <View style={styling.inputWrapper}>
+                <WrapperComponent style={styling.inputWrapper} onPress={onPress}>
                     {icon && (
                         <View style={styling.iconWrapper}>
                             <Icon name={icon} style={styling.icon} />
                         </View>
                     )}
-                    <TextInput
-                        secureTextEntry={isPassword}
-                        style={styling.input}
-                        value={value}
-                        placeholder={placeholder}
-                        placeholderTextColor={palette.textField?.placeholderColor}
-                        onFocus={handleFocussed}
-                        onBlur={handleLostFocus}
-                        onChangeText={handleChange}
-                        {...otherProps}
-                    />
-                </View>
+                    {!onlyMask ? (
+                        <TextInput
+                            secureTextEntry={isPassword}
+                            style={styling.input}
+                            value={value}
+                            placeholder={placeholder}
+                            placeholderTextColor={palette.textField?.placeholderColor}
+                            onFocus={handleFocussed}
+                            onBlur={handleLostFocus}
+                            onChangeText={handleChange}
+                            {...otherProps}
+                        />
+                    ) : (
+                        <Text style={styling.maskedValue}>{value}</Text>
+                    )}
+                </WrapperComponent>
                 {actionIcon && (
                     <TouchableOpacity style={styling.actionButton} onPress={onActionTriggered}>
                         <Icon name={actionIcon} style={styling.actionIcon} />

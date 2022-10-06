@@ -5,6 +5,7 @@ interface IconButtonProps {
     variant?: 'primary' | 'secondary' | 'default';
     size?: 'sm' | 'md' | 'lg';
     onPress?: () => void;
+    disabled?: boolean;
 }
 declare const IconButton: React.FC<IconButtonProps>;
 export default IconButton;

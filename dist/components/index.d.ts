@@ -7,4 +7,5 @@ import TextField from './form/text-field';
 import Image from './image';
 import IconButton from './icon-button';
 import Dialog from './dialog';
-export { Button, Icon, IconButton, PasswordField, Text, TextField, Title, Image, Dialog };
+import DropDown from './form/dropdown';
+export { Button, Icon, IconButton, PasswordField, Text, TextField, Title, Image, Dialog, DropDown };

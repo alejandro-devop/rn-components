@@ -16,4 +16,6 @@ export interface TextFieldProps {
     onActionTriggered?: () => void;
     isPassword?: boolean;
     autoCapitalize?: 'characters' | 'words' | 'sentences' | 'none';
+    onlyMask?: boolean;
+    onPress?: () => void;
 }

@@ -7,6 +7,7 @@ export declare type StyleGuide = {
 export declare type ParamsType = {
     variant?: 'primary' | 'secondary' | 'default';
     size?: 'sm' | 'md' | 'lg';
+    disabled?: boolean;
 };
 declare const styles: StyleDefType<StyleGuide, ParamsType>;
 export default styles;

@@ -12,6 +12,7 @@ export type StyleGuide = {
     root: ViewStyle
     icon: FontAwesomeIconStyle
     iconWrapper: ViewStyle
+    maskedValue: TextStyle
 }
 
 export type ParamsGiven = { focussed?: boolean; primary?: boolean; secondary?: boolean }
@@ -55,6 +56,11 @@ const styling: StyleDefType<StyleGuide, ParamsGiven> = ({
         fontSize: fromVars('textField.input.fontSize', 18),
         paddingHorizontal: fromVars('textField.input.paddingHorizontal', 5),
         flex: 1
+    },
+    maskedValue: {
+        flex: 1,
+        paddingHorizontal: fromVars('textField.input.paddingHorizontal', 5),
+        fontSize: fromVars('textField.input.fontSize', 18)
     },
     inputRow: {
         flexDirection: 'row'

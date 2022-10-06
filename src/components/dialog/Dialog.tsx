@@ -9,16 +9,17 @@ interface DialogProps {
     children?: React.ReactNode
     open?: boolean
     onClose?: () => void
+    title?: string
 }
 
-const Dialog: React.FC<DialogProps> = ({ open, onClose, children }) => {
+const Dialog: React.FC<DialogProps> = ({ open, onClose, children, title }) => {
     const styling = useStyling<StyleGuide, ParamsType>(styles)
     return (
-        <Modal animationType="slide" transparent visible={open} onRequestClose={onClose}>
+        <Modal animationType="fade" transparent visible={open} onRequestClose={onClose}>
             <View style={styling.root}>
                 <View style={styling.container}>
                     <View style={styling.header}>
-                        <Text style={styling.title}>Title</Text>
+                        <Text style={styling.title}>{title}</Text>
                         <View style={styling.closeButtonWrapper}>
                             <IconButton
                                 onPress={onClose}

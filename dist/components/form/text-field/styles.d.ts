@@ -11,6 +11,7 @@ export declare type StyleGuide = {
     root: ViewStyle;
     icon: FontAwesomeIconStyle;
     iconWrapper: ViewStyle;
+    maskedValue: TextStyle;
 };
 export declare type ParamsGiven = {
     focussed?: boolean;

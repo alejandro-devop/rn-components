@@ -10,11 +10,13 @@ interface IconButtonProps {
     variant?: 'primary' | 'secondary' | 'default'
     size?: 'sm' | 'md' | 'lg'
     onPress?: () => void
+    disabled?: boolean
 }
 
-const IconButton: React.FC<IconButtonProps> = ({ icon, variant, size, onPress }) => {
+const IconButton: React.FC<IconButtonProps> = ({ icon, variant, size, onPress, disabled }) => {
     const styling = useStyling<StyleGuide, ParamsType>(styles, {
         variant,
+        disabled,
         size
     })
     const iconSize = React.useMemo(() => {
@@ -25,7 +27,7 @@ const IconButton: React.FC<IconButtonProps> = ({ icon, variant, size, onPress })
         }[size || 'md']
     }, [size])
     return (
-        <TouchableOpacity style={styling.root} onPress={onPress}>
+        <TouchableOpacity style={styling.root} onPress={onPress} disabled={disabled}>
             <Icon name={icon} style={styling.icon} size={iconSize} />
         </TouchableOpacity>
     )

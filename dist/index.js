@@ -224,6 +224,11 @@ var styling = function (_a) {
             paddingHorizontal: fromVars('textField.input.paddingHorizontal', 5),
             flex: 1
         },
+        maskedValue: {
+            flex: 1,
+            paddingHorizontal: fromVars('textField.input.paddingHorizontal', 5),
+            fontSize: fromVars('textField.input.fontSize', 18)
+        },
         inputRow: {
             flexDirection: 'row'
         },
@@ -255,7 +260,7 @@ var styling = function (_a) {
 
 var TextField = function (_a) {
     var _b;
-    var icon = _a.icon, label = _a.label, onBlur = _a.onBlur, onChange = _a.onChange, name = _a.name, onFocus = _a.onFocus, placeholder = _a.placeholder, secondary = _a.secondary, value = _a.value, actionIcon = _a.actionIcon, isPassword = _a.isPassword, onActionTriggered = _a.onActionTriggered, otherProps = __rest(_a, ["icon", "label", "onBlur", "onChange", "name", "onFocus", "placeholder", "secondary", "value", "actionIcon", "isPassword", "onActionTriggered"]);
+    var icon = _a.icon, label = _a.label, onBlur = _a.onBlur, onChange = _a.onChange, name = _a.name, onFocus = _a.onFocus, placeholder = _a.placeholder, secondary = _a.secondary, value = _a.value, actionIcon = _a.actionIcon, isPassword = _a.isPassword, onActionTriggered = _a.onActionTriggered, onlyMask = _a.onlyMask, onPress = _a.onPress, otherProps = __rest(_a, ["icon", "label", "onBlur", "onChange", "name", "onFocus", "placeholder", "secondary", "value", "actionIcon", "isPassword", "onActionTriggered", "onlyMask", "onPress"]);
     var _c = React__default.default.useState(false), focussed = _c[0], setFocussed = _c[1];
     var palette = rnThemizer.usePalette();
     var styling$1 = rnThemizer.useStyling(styling, { focussed: focussed, secondary: secondary });
@@ -274,13 +279,14 @@ var TextField = function (_a) {
             onChange({ name: name, value: text });
         }
     };
+    var WrapperComponent = onlyMask && onPress ? reactNative.TouchableOpacity : reactNative.View;
     return (React__default.default.createElement(reactNative.View, { style: styling$1.root },
         React__default.default.createElement(reactNative.View, { style: styling$1.labelWrapper }, label && React__default.default.createElement(reactNative.Text, { style: styling$1.label }, label)),
         React__default.default.createElement(reactNative.View, { style: styling$1.inputRow },
-            React__default.default.createElement(reactNative.View, { style: styling$1.inputWrapper },
+            React__default.default.createElement(WrapperComponent, { style: styling$1.inputWrapper, onPress: onPress },
                 icon && (React__default.default.createElement(reactNative.View, { style: styling$1.iconWrapper },
                     React__default.default.createElement(Icon, { name: icon, style: styling$1.icon }))),
-                React__default.default.createElement(reactNative.TextInput, __assign({ secureTextEntry: isPassword, style: styling$1.input, value: value, placeholder: placeholder, placeholderTextColor: (_b = palette.textField) === null || _b === void 0 ? void 0 : _b.placeholderColor, onFocus: handleFocussed, onBlur: handleLostFocus, onChangeText: handleChange }, otherProps))),
+                !onlyMask ? (React__default.default.createElement(reactNative.TextInput, __assign({ secureTextEntry: isPassword, style: styling$1.input, value: value, placeholder: placeholder, placeholderTextColor: (_b = palette.textField) === null || _b === void 0 ? void 0 : _b.placeholderColor, onFocus: handleFocussed, onBlur: handleLostFocus, onChangeText: handleChange }, otherProps))) : (React__default.default.createElement(reactNative.Text, { style: styling$1.maskedValue }, value))),
             actionIcon && (React__default.default.createElement(reactNative.TouchableOpacity, { style: styling$1.actionButton, onPress: onActionTriggered },
                 React__default.default.createElement(Icon, { name: actionIcon, style: styling$1.actionIcon }))))));
 };
@@ -304,7 +310,7 @@ var Text = function (_a) {
     return React__default.default.createElement(reactNative.Text, { style: style }, children);
 };
 
-var styles$2 = function (_a) {
+var styles$5 = function (_a) {
     var params = _a.params, applyFor = _a.applyFor;
     return ({
         root: {
@@ -336,7 +342,7 @@ var styles$2 = function (_a) {
 
 var Title = function (_a) {
     var children = _a.children, size = _a.size, style = _a.style;
-    var styling = rnThemizer.useStyling(styles$2, {
+    var styling = rnThemizer.useStyling(styles$5, {
         size: size
     });
     return (React__default.default.createElement(reactNative.View, { style: styling.root },
@@ -351,9 +357,9 @@ var Image = function (_a) {
     return React__default.default.createElement(reactNative.Image, { source: src, style: style });
 };
 
-var styles$1 = function (_a) {
+var styles$4 = function (_a) {
     var _b;
-    var params = _a.params, size = _a.size, palette = _a.palette, applyFor = _a.applyFor;
+    var params = _a.params, size = _a.size, palette = _a.palette, applyFor = _a.applyFor, applyIf = _a.applyIf;
     return ({
         icon: __assign({}, applyFor(params === null || params === void 0 ? void 0 : params.variant, {
             primary: {
@@ -363,7 +369,7 @@ var styles$1 = function (_a) {
                 color: '#FFF'
             }
         })),
-        root: __assign(__assign({ justifyContent: 'center', alignItems: 'center', borderRadius: 100, backgroundColor: (_b = palette.buttons) === null || _b === void 0 ? void 0 : _b.default }, applyFor(params === null || params === void 0 ? void 0 : params.size, {
+        root: __assign(__assign(__assign({ justifyContent: 'center', alignItems: 'center', borderRadius: 100, backgroundColor: (_b = palette.buttons) === null || _b === void 0 ? void 0 : _b.default }, applyFor(params === null || params === void 0 ? void 0 : params.size, {
             sm: __assign({}, size(35)),
             md: __assign({}, size(50)),
             lg: __assign({}, size(60))
@@ -374,14 +380,18 @@ var styles$1 = function (_a) {
             secondary: {
                 backgroundColor: palette.secondaryColor
             }
+        })), applyIf(params === null || params === void 0 ? void 0 : params.disabled, {
+            backgroundColor: 'rgba(0,0,0,0.8)',
+            opacity: 0.2
         }))
     });
 };
 
 var IconButton = function (_a) {
-    var icon = _a.icon, variant = _a.variant, size = _a.size, onPress = _a.onPress;
-    var styling = rnThemizer.useStyling(styles$1, {
+    var icon = _a.icon, variant = _a.variant, size = _a.size, onPress = _a.onPress, disabled = _a.disabled;
+    var styling = rnThemizer.useStyling(styles$4, {
         variant: variant,
+        disabled: disabled,
         size: size
     });
     var iconSize = React__default.default.useMemo(function () {
@@ -391,7 +401,7 @@ var IconButton = function (_a) {
             lg: 40
         }[size || 'md'];
     }, [size]);
-    return (React__default.default.createElement(reactNative.TouchableOpacity, { style: styling.root, onPress: onPress },
+    return (React__default.default.createElement(reactNative.TouchableOpacity, { style: styling.root, onPress: onPress, disabled: disabled },
         React__default.default.createElement(Icon, { name: icon, style: styling.icon, size: iconSize })));
 };
 IconButton.defaultProps = {
@@ -399,7 +409,7 @@ IconButton.defaultProps = {
     size: 'md'
 };
 
-var styles = function (_a) { return ({
+var styles$3 = function (_a) { return ({
     childContent: {
         flex: 1
     },
@@ -433,16 +443,97 @@ var styles = function (_a) { return ({
 }); };
 
 var Dialog = function (_a) {
-    var open = _a.open, onClose = _a.onClose, children = _a.children;
-    var styling = rnThemizer.useStyling(styles);
-    return (React__default.default.createElement(reactNative.Modal, { animationType: "slide", transparent: true, visible: open, onRequestClose: onClose },
+    var open = _a.open, onClose = _a.onClose, children = _a.children, title = _a.title;
+    var styling = rnThemizer.useStyling(styles$3);
+    return (React__default.default.createElement(reactNative.Modal, { animationType: "fade", transparent: true, visible: open, onRequestClose: onClose },
         React__default.default.createElement(reactNative.View, { style: styling.root },
             React__default.default.createElement(reactNative.View, { style: styling.container },
                 React__default.default.createElement(reactNative.View, { style: styling.header },
-                    React__default.default.createElement(Text, { style: styling.title }, "Title"),
+                    React__default.default.createElement(Text, { style: styling.title }, title),
                     React__default.default.createElement(reactNative.View, { style: styling.closeButtonWrapper },
                         React__default.default.createElement(IconButton, { onPress: onClose, icon: "times", size: "sm", variant: "primary" }))),
                 React__default.default.createElement(reactNative.View, { style: styling.childContent }, children)))));
+};
+
+var styles$2 = function (_a) { return ({
+    actionsWrapper: {
+        alignItems: 'center',
+        paddingVertical: 10
+    },
+    iconWrapper: {
+        position: 'absolute',
+        right: 30,
+        bottom: 25,
+        backgroundColor: '#FFF'
+    },
+    root: {}
+}); };
+
+var styles$1 = function (_a) { return ({
+    root: {
+        paddingHorizontal: 20
+    }
+}); };
+
+var styles = function (_a) {
+    var size = _a.size, palette = _a.palette, applyIf = _a.applyIf, params = _a.params;
+    return ({
+        label: { fontSize: 18, flex: 1, marginLeft: 10 },
+        radiusContent: __assign({ backgroundColor: palette.primaryColor, borderRadius: 100 }, size(18)),
+        radiusWrapper: __assign(__assign({ alignItems: 'center', justifyContent: 'center', borderWidth: 2, borderRadius: 100, borderColor: 'rgba(0,0,0,0.2)' }, applyIf(params === null || params === void 0 ? void 0 : params.active, {
+            borderColor: palette.primaryColor
+        })), size(25)),
+        root: {
+            flexDirection: 'row',
+            paddingHorizontal: 10,
+            paddingVertical: 10,
+            borderRadius: 50,
+            borderWidth: 1,
+            marginBottom: 5,
+            borderColor: 'rgba(0,0,0,0.2)'
+        }
+    });
+};
+
+var ListItemRenderer = function (_a) {
+    var label = _a.label, active = _a.active, onSelect = _a.onSelect;
+    var styling = rnThemizer.useStyling(styles, { active: active });
+    return (React__default.default.createElement(reactNative.TouchableOpacity, { style: styling.root, onPress: onSelect },
+        React__default.default.createElement(reactNative.Text, { style: styling.label }, label),
+        React__default.default.createElement(reactNative.TouchableOpacity, { style: styling.radiusWrapper, onPress: onSelect }, active && React__default.default.createElement(reactNative.View, { style: styling.radiusContent }))));
+};
+
+var ListRenderer = function (_a) {
+    var options = _a.options, onSelctItem = _a.onSelctItem, selectedValue = _a.selectedValue;
+    var styling = rnThemizer.useStyling(styles$1);
+    return (React__default.default.createElement(reactNative.ScrollView, null,
+        React__default.default.createElement(reactNative.View, { style: styling.root }, options === null || options === void 0 ? void 0 : options.map(function (item, key) { return (React__default.default.createElement(ListItemRenderer, { active: item.value === selectedValue, label: item.label, key: "item-".concat(key), onSelect: function () {
+                onSelctItem(item.value);
+            } })); }))));
+};
+
+var DropDown = function (_a) {
+    var options = _a.options; _a.onChange; var label = _a.label, placeholder = _a.placeholder, props = __rest(_a, ["options", "onChange", "label", "placeholder"]);
+    var styling = rnThemizer.useStyling(styles$2);
+    var _b = React__default.default.useState(false), open = _b[0], setOpen = _b[1];
+    var _c = React__default.default.useState(null), selected = _c[0], setSelected = _c[1];
+    var _d = React__default.default.useState(), displayLabel = _d[0], setDisplayLabel = _d[1];
+    var toggleOpen = function () { return setOpen(!open); };
+    var onSelect = function () {
+        // handle on change
+        var itemLabel = options.find(function (item) { return item.value === selected; });
+        setDisplayLabel(itemLabel === null || itemLabel === void 0 ? void 0 : itemLabel.label);
+        setOpen(false);
+    };
+    return (React__default.default.createElement(React__default.default.Fragment, null,
+        React__default.default.createElement(reactNative.View, { style: styling.root },
+            React__default.default.createElement(TextField, __assign({ label: label, placeholder: placeholder }, props, { onlyMask: true, onPress: toggleOpen, value: displayLabel })),
+            React__default.default.createElement(reactNative.TouchableOpacity, { style: styling.iconWrapper },
+                React__default.default.createElement(Icon, { name: "chevron-down" }))),
+        React__default.default.createElement(Dialog, { open: open, onClose: toggleOpen, title: placeholder || label },
+            React__default.default.createElement(ListRenderer, { onSelctItem: function (item) { return setSelected(item); }, selectedValue: selected, options: options }),
+            React__default.default.createElement(reactNative.View, { style: styling.actionsWrapper },
+                React__default.default.createElement(IconButton, { onPress: onSelect, icon: "check", variant: "primary", disabled: !selected })))));
 };
 
 var registerIcons = function () {
@@ -451,6 +542,7 @@ var registerIcons = function () {
 
 exports.Button = Button;
 exports.Dialog = Dialog;
+exports.DropDown = DropDown;
 exports.Icon = Icon;
 exports.IconButton = IconButton;
 exports.Image = Image;

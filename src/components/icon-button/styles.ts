@@ -9,9 +9,16 @@ export type StyleGuide = {
 export type ParamsType = {
     variant?: 'primary' | 'secondary' | 'default'
     size?: 'sm' | 'md' | 'lg'
+    disabled?: boolean
 }
 
-const styles: StyleDefType<StyleGuide, ParamsType> = ({ params, size, palette, applyFor }) => ({
+const styles: StyleDefType<StyleGuide, ParamsType> = ({
+    params,
+    size,
+    palette,
+    applyFor,
+    applyIf
+}) => ({
     icon: {
         ...applyFor(params?.variant, {
             primary: {
@@ -45,6 +52,10 @@ const styles: StyleDefType<StyleGuide, ParamsType> = ({ params, size, palette, a
             secondary: {
                 backgroundColor: palette.secondaryColor
             }
+        }),
+        ...applyIf(params?.disabled, {
+            backgroundColor: 'rgba(0,0,0,0.8)',
+            opacity: 0.2
         })
     }
 })
