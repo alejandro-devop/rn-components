@@ -16,3 +16,4 @@
 - [added]: Support for loader on buttons
 - [added]: Cogs and home icon
 - [added]: IconButton component
+- [added]: Base dialog component

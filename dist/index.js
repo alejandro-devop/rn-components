@@ -304,7 +304,7 @@ var Text = function (_a) {
     return React__default.default.createElement(reactNative.Text, { style: style }, children);
 };
 
-var styles$1 = function (_a) {
+var styles$2 = function (_a) {
     var params = _a.params, applyFor = _a.applyFor;
     return ({
         root: {
@@ -336,7 +336,7 @@ var styles$1 = function (_a) {
 
 var Title = function (_a) {
     var children = _a.children, size = _a.size, style = _a.style;
-    var styling = rnThemizer.useStyling(styles$1, {
+    var styling = rnThemizer.useStyling(styles$2, {
         size: size
     });
     return (React__default.default.createElement(reactNative.View, { style: styling.root },
@@ -351,7 +351,7 @@ var Image = function (_a) {
     return React__default.default.createElement(reactNative.Image, { source: src, style: style });
 };
 
-var styles = function (_a) {
+var styles$1 = function (_a) {
     var _b;
     var params = _a.params, size = _a.size, palette = _a.palette, applyFor = _a.applyFor;
     return ({
@@ -380,7 +380,7 @@ var styles = function (_a) {
 
 var IconButton = function (_a) {
     var icon = _a.icon, variant = _a.variant, size = _a.size, onPress = _a.onPress;
-    var styling = rnThemizer.useStyling(styles, {
+    var styling = rnThemizer.useStyling(styles$1, {
         variant: variant,
         size: size
     });
@@ -399,11 +399,58 @@ IconButton.defaultProps = {
     size: 'md'
 };
 
+var styles = function (_a) { return ({
+    childContent: {
+        flex: 1
+    },
+    closeButtonWrapper: {
+        position: 'absolute',
+        right: 10,
+        top: 10
+    },
+    container: {
+        borderRadius: 30,
+        height: '80%',
+        width: '90%',
+        backgroundColor: '#FFF'
+    },
+    header: {
+        width: '100%',
+        paddingHorizontal: 20,
+        paddingVertical: 10
+    },
+    root: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
+        width: '100%',
+        backgroundColor: 'rgba(0,0,0,0.2)'
+    },
+    title: {
+        fontSize: 28,
+        textAlign: 'center'
+    }
+}); };
+
+var Dialog = function (_a) {
+    var open = _a.open, onClose = _a.onClose, children = _a.children;
+    var styling = rnThemizer.useStyling(styles);
+    return (React__default.default.createElement(reactNative.Modal, { animationType: "slide", transparent: true, visible: open, onRequestClose: onClose },
+        React__default.default.createElement(reactNative.View, { style: styling.root },
+            React__default.default.createElement(reactNative.View, { style: styling.container },
+                React__default.default.createElement(reactNative.View, { style: styling.header },
+                    React__default.default.createElement(Text, { style: styling.title }, "Title"),
+                    React__default.default.createElement(reactNative.View, { style: styling.closeButtonWrapper },
+                        React__default.default.createElement(IconButton, { onPress: onClose, icon: "times", size: "sm", variant: "primary" }))),
+                React__default.default.createElement(reactNative.View, { style: styling.childContent }, children)))));
+};
+
 var registerIcons = function () {
     fontawesomeSvgCore.library.add(faTag.faTag, faBrain.faBrain, faAdd.faAdd, faTags.faTags, faClock.faClock, faChevronRight.faChevronRight, faChevronLeft.faChevronLeft, faChevronUp.faChevronUp, faChevronDown.faChevronDown, faBed.faBed, faBedPulse.faBedPulse, faHeartPulse.faHeartPulse, faBattery.faBattery, faBell.faBell, faBook.faBook, faGlassWater.faGlassWater, faBriefcase.faBriefcase, faBoxArchive.faBoxArchive, faBox.faBox, faCalendar.faCalendar, faCaretUp.faCaretUp, faCaretDown.faCaretDown, faCheck.faCheck, faChartPie.faChartPie, faCircle.faCircle, faCircleCheck.faCircleCheck, faLock.faLock, faUser.faUser, faEye.faEye, faEyeSlash.faEyeSlash, faEllipsisVertical.faEllipsisVertical, faSearch.faSearch, faPlay.faPlay, faTimes.faTimes, faRefresh.faRefresh, faEnvelope.faEnvelope, faCogs.faCogs, faHome.faHome);
 };
 
 exports.Button = Button;
+exports.Dialog = Dialog;
 exports.Icon = Icon;
 exports.IconButton = IconButton;
 exports.Image = Image;
