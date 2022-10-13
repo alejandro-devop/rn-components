@@ -59,7 +59,8 @@
     "@fortawesome/react-native-fontawesome": "^0.3.0",
     "react": "^18.0.0",
     "react-native": "^0.69.4",
-    "react-native-svg": "^13.0.0"
+    "react-native-svg": "^13.0.0",
+    "react-native-wheel-color-picker": "^1.2.0"
   },
   "jest": {
     "setupFiles": [
@@ -69,5 +70,7 @@
       "<rootDir>/dist/"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-native-wheel-color-picker": "^1.2.0"
+  }
 }

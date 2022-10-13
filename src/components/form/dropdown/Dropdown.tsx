@@ -17,6 +17,7 @@ const DropDown: React.FC<DropDownProps & TextFieldProps> = ({
     options,
     onChange,
     label,
+    name,
     placeholder,
     ...props
 }) => {
@@ -30,6 +31,9 @@ const DropDown: React.FC<DropDownProps & TextFieldProps> = ({
         // handle on change
         const itemLabel = options.find((item) => item.value === selected)
         setDisplayLabel(itemLabel?.label)
+        if (onChange) {
+            onChange({ name, value: selected as any })
+        }
         setOpen(false)
     }
 

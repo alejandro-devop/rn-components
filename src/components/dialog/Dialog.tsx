@@ -29,7 +29,7 @@ const Dialog: React.FC<DialogProps> = ({ open, onClose, children, title }) => {
                             />
                         </View>
                     </View>
-                    <View style={styling.childContent}>{children}</View>
+                    {open && <View style={styling.childContent}>{children}</View>}
                 </View>
             </View>
         </Modal>

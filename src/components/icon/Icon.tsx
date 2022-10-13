@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
  * @since 0.0.1
  * @returns
  */
-const Icon: React.FC<IconProps> = ({ name, style, size }) => {
+const Icon: React.FC<IconProps> =    ({ name, style, size }) => {
     return (
         <View>
             <FontAwesomeIcon icon={name} style={style} size={size} />
