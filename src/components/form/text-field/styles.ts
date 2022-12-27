@@ -94,18 +94,6 @@ const styling: StyleDefType<StyleGuide, ParamsGiven> = ({
             elevation: 5
         })
     },
-    labelWrapper: {
-        marginBottom: 5,
-        paddingHorizontal: fromVars('textField.label.paddingHorizontal', 10)
-    },
-    label: {
-        fontSize: fromVars('textField.label.fontSize', 18),
-        fontWeight: fromVars('textField.label.fontWeight', '600'),
-        color: palette?.primaryColor,
-        ...applyIf(params?.secondary, {
-            color: palette?.secondaryColor
-        })
-    },
     root: {
         paddingHorizontal: fromVars('textField.root.paddingHorizontal', 18),
         marginBottom: fromVars('textField.root.marginBottom', 18)

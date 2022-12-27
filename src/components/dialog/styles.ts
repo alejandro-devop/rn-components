@@ -18,7 +18,8 @@ const styles: StyleDefType<StyleGuide, ParamsType> = ({}) => ({
     closeButtonWrapper: {
         position: 'absolute',
         right: 10,
-        top: 10
+        top: 10,
+        zIndex: 100
     },
     container: {
         borderRadius: 30,

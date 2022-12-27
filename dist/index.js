@@ -318,7 +318,7 @@ function __spreadArray(to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 }
 
-var styling$1 = function (_a) {
+var styling$2 = function (_a) {
     var _b, _c, _d, _e, _f, _g;
     var palette = _a.palette, params = _a.params, applyFor = _a.applyFor, valueFor = _a.valueFor, variables = _a.variables;
     /**
@@ -400,7 +400,7 @@ Icon.defaultProps = {
  */
 var Button = function (_a) {
     var children = _a.children, disabled = _a.disabled, onPress = _a.onPress, iconPlacement = _a.iconPlacement, icon = _a.icon, rounded = _a.rounded, variant = _a.variant, color = _a.color, loading = _a.loading, loadingText = _a.loadingText;
-    var styling = rnThemizer.useStyling(styling$1, {
+    var styling = rnThemizer.useStyling(styling$2, {
         disabled: disabled,
         variant: variant,
         color: color,
@@ -427,7 +427,7 @@ Button.defaultProps = {
     iconPlacement: 'right'
 };
 
-var styling = function (_a) {
+var styling$1 = function (_a) {
     var fromPalette = _a.fromPalette, fromVars = _a.fromVars, applyIf = _a.applyIf, params = _a.params, palette = _a.palette;
     return ({
         actionButton: {
@@ -478,13 +478,6 @@ var styling = function (_a) {
             shadowRadius: 4,
             elevation: 5
         })),
-        labelWrapper: {
-            marginBottom: 5,
-            paddingHorizontal: fromVars('textField.label.paddingHorizontal', 10)
-        },
-        label: __assign({ fontSize: fromVars('textField.label.fontSize', 18), fontWeight: fromVars('textField.label.fontWeight', '600'), color: palette === null || palette === void 0 ? void 0 : palette.primaryColor }, applyIf(params === null || params === void 0 ? void 0 : params.secondary, {
-            color: palette === null || palette === void 0 ? void 0 : palette.secondaryColor
-        })),
         root: {
             paddingHorizontal: fromVars('textField.root.paddingHorizontal', 18),
             marginBottom: fromVars('textField.root.marginBottom', 18)
@@ -492,12 +485,50 @@ var styling = function (_a) {
     });
 };
 
+var styles$b = function (_a) {
+    var fromVars = _a.fromVars, applyIf = _a.applyIf, palette = _a.palette, params = _a.params;
+    return ({
+        labelWrapper: {
+            marginBottom: (params === null || params === void 0 ? void 0 : params.spacingBottom) ? 5 : 0,
+            paddingHorizontal: fromVars('textField.label.paddingHorizontal', 10)
+        },
+        label: __assign(__assign({ fontSize: fromVars('textField.label.fontSize', 18), color: palette === null || palette === void 0 ? void 0 : palette.textPrimaryColor }, applyIf(params === null || params === void 0 ? void 0 : params.primary, {
+            fontWeight: fromVars('textField.label.fontWeight', '600'),
+            color: palette === null || palette === void 0 ? void 0 : palette.primaryColor
+        })), applyIf(params === null || params === void 0 ? void 0 : params.secondary, {
+            fontWeight: fromVars('textField.label.fontWeight', '600'),
+            color: palette === null || palette === void 0 ? void 0 : palette.secondaryColor
+        }))
+    });
+};
+
+/**
+ * Component to render the application texts
+ * @author Alejandro Quiroz <alejandro.devop@gmail.com>
+ * @version 1.0.0
+ * @version 0.0.1
+ * @returns
+ */
+var Text = function (_a) {
+    var children = _a.children, style = _a.style;
+    return React__default.default.createElement(reactNative.Text, { style: style }, children);
+};
+
+var FormLabel = function (_a) {
+    var children = _a.children, primary = _a.primary, secondary = _a.secondary;
+    var styling = rnThemizer.useStyling(styles$b, { primary: primary, secondary: secondary });
+    return (React__default.default.createElement(reactNative.View, { style: styling.labelWrapper }, children && React__default.default.createElement(Text, { style: styling.label }, children)));
+};
+FormLabel.defaultProps = {
+    spacingBottom: true
+};
+
 var TextField = function (_a) {
     var _b;
     var icon = _a.icon, label = _a.label, onBlur = _a.onBlur, onChange = _a.onChange, name = _a.name, onFocus = _a.onFocus, placeholder = _a.placeholder, secondary = _a.secondary, value = _a.value, actionIcon = _a.actionIcon, isPassword = _a.isPassword, onActionTriggered = _a.onActionTriggered, onlyMask = _a.onlyMask, onPress = _a.onPress, otherProps = __rest(_a, ["icon", "label", "onBlur", "onChange", "name", "onFocus", "placeholder", "secondary", "value", "actionIcon", "isPassword", "onActionTriggered", "onlyMask", "onPress"]);
     var _c = React__default.default.useState(false), focussed = _c[0], setFocussed = _c[1];
     var palette = rnThemizer.usePalette();
-    var styling$1 = rnThemizer.useStyling(styling, { focussed: focussed, secondary: secondary });
+    var styling = rnThemizer.useStyling(styling$1, { focussed: focussed, secondary: secondary });
     var handleFocussed = React__default.default.useCallback(function () {
         setFocussed(true);
         if (onFocus)
@@ -514,15 +545,15 @@ var TextField = function (_a) {
         }
     };
     var WrapperComponent = onlyMask && onPress ? reactNative.TouchableOpacity : reactNative.View;
-    return (React__default.default.createElement(reactNative.View, { style: styling$1.root },
-        React__default.default.createElement(reactNative.View, { style: styling$1.labelWrapper }, label && React__default.default.createElement(reactNative.Text, { style: styling$1.label }, label)),
-        React__default.default.createElement(reactNative.View, { style: styling$1.inputRow },
-            React__default.default.createElement(WrapperComponent, { style: styling$1.inputWrapper, onPress: onPress },
-                icon && (React__default.default.createElement(reactNative.View, { style: styling$1.iconWrapper },
-                    React__default.default.createElement(Icon, { name: icon, style: styling$1.icon }))),
-                !onlyMask ? (React__default.default.createElement(reactNative.TextInput, __assign({ secureTextEntry: isPassword, style: styling$1.input, value: value, placeholder: placeholder, placeholderTextColor: (_b = palette.textField) === null || _b === void 0 ? void 0 : _b.placeholderColor, onFocus: handleFocussed, onBlur: handleLostFocus, onChangeText: handleChange }, otherProps))) : (React__default.default.createElement(reactNative.Text, { style: styling$1.maskedValue }, value))),
-            actionIcon && (React__default.default.createElement(reactNative.TouchableOpacity, { style: styling$1.actionButton, onPress: onActionTriggered },
-                React__default.default.createElement(Icon, { name: actionIcon, style: styling$1.actionIcon }))))));
+    return (React__default.default.createElement(reactNative.View, { style: styling.root },
+        label && (React__default.default.createElement(FormLabel, { primary: true, secondary: secondary }, label)),
+        React__default.default.createElement(reactNative.View, { style: styling.inputRow },
+            React__default.default.createElement(WrapperComponent, { style: styling.inputWrapper, onPress: onPress },
+                icon && (React__default.default.createElement(reactNative.View, { style: styling.iconWrapper },
+                    React__default.default.createElement(Icon, { name: icon, style: styling.icon }))),
+                !onlyMask ? (React__default.default.createElement(reactNative.TextInput, __assign({ secureTextEntry: isPassword, style: styling.input, value: value, placeholder: placeholder, placeholderTextColor: (_b = palette.textField) === null || _b === void 0 ? void 0 : _b.placeholderColor, onFocus: handleFocussed, onBlur: handleLostFocus, onChangeText: handleChange }, otherProps))) : (React__default.default.createElement(reactNative.Text, { style: styling.maskedValue }, value))),
+            actionIcon && (React__default.default.createElement(reactNative.TouchableOpacity, { style: styling.actionButton, onPress: onActionTriggered },
+                React__default.default.createElement(Icon, { name: actionIcon, style: styling.actionIcon }))))));
 };
 
 var PasswordField = function (_a) {
@@ -530,18 +561,6 @@ var PasswordField = function (_a) {
     var _b = React__default.default.useState(false), opened = _b[0], setOpened = _b[1];
     var handleAction = function () { return setOpened(!opened); };
     return (React__default.default.createElement(TextField, __assign({ label: label, icon: "lock", actionIcon: opened ? 'eye-slash' : 'eye', onActionTriggered: handleAction, isPassword: !opened }, otherProps)));
-};
-
-/**
- * Component to render the application texts
- * @author Alejandro Quiroz <alejandro.devop@gmail.com>
- * @version 1.0.0
- * @version 0.0.1
- * @returns
- */
-var Text = function (_a) {
-    var children = _a.children, style = _a.style;
-    return React__default.default.createElement(reactNative.Text, { style: style }, children);
 };
 
 var styles$a = function (_a) {
@@ -622,7 +641,7 @@ var styles$9 = function (_a) {
 };
 
 var IconButton = function (_a) {
-    var icon = _a.icon, variant = _a.variant, size = _a.size, disabled = _a.disabled;
+    var icon = _a.icon, variant = _a.variant, size = _a.size, disabled = _a.disabled, onPress = _a.onPress;
     var styling = rnThemizer.useStyling(styles$9, {
         variant: variant,
         disabled: disabled,
@@ -635,12 +654,44 @@ var IconButton = function (_a) {
             lg: 40
         }[size || 'md'];
     }, [size]);
-    return (React__default.default.createElement(reactNative.View, { style: styling.root },
+    return (React__default.default.createElement(reactNative.TouchableOpacity, { onPress: onPress, disabled: disabled, style: styling.root },
         React__default.default.createElement(Icon, { name: icon, style: styling.icon, size: iconSize })));
 };
 IconButton.defaultProps = {
     variant: 'default',
     size: 'md'
+};
+
+var styling = function (_a) {
+    var _b, _c;
+    var palette = _a.palette, params = _a.params, applyIf = _a.applyIf;
+    return ({
+        controlWrapper: __assign(__assign({ width: 34, height: 34, borderRadius: 100, borderWidth: 2, alignItems: 'center', justifyContent: 'center', borderColor: (_b = palette.buttons) === null || _b === void 0 ? void 0 : _b.defaultTextColor }, applyIf(params === null || params === void 0 ? void 0 : params.primary, {
+            borderColor: palette.primaryColor
+        })), applyIf(params === null || params === void 0 ? void 0 : params.secondary, {
+            borderColor: palette.secondaryColor
+        })),
+        controlIcon: __assign(__assign({ color: (_c = palette.buttons) === null || _c === void 0 ? void 0 : _c.defaultTextColor }, applyIf(params === null || params === void 0 ? void 0 : params.primary, {
+            color: palette.primaryColor
+        })), applyIf(params === null || params === void 0 ? void 0 : params.secondary, {
+            color: palette.secondaryColor
+        })),
+        root: {
+            flexDirection: 'row',
+            alignItems: 'center',
+            paddingHorizontal: 20,
+            marginBottom: 10
+        }
+    });
+};
+
+var CheckBoxField = function (_a) {
+    var label = _a.label, checked = _a.checked, primary = _a.primary, secondary = _a.secondary, onPress = _a.onPress;
+    var styling$1 = rnThemizer.useStyling(styling, { primary: primary, secondary: secondary });
+    return (React__default.default.createElement(reactNative.View, { style: styling$1.root },
+        React__default.default.createElement(reactNative.TouchableOpacity, { style: styling$1.controlWrapper, onPress: onPress }, checked && React__default.default.createElement(Icon, { name: "check", style: styling$1.controlIcon })),
+        React__default.default.createElement(reactNative.TouchableOpacity, { onPress: onPress },
+            React__default.default.createElement(FormLabel, { spacingBottom: false }, label))));
 };
 
 var styles$8 = function (_a) { return ({
@@ -650,7 +701,8 @@ var styles$8 = function (_a) { return ({
     closeButtonWrapper: {
         position: 'absolute',
         right: 10,
-        top: 10
+        top: 10,
+        zIndex: 100
     },
     container: {
         borderRadius: 30,
@@ -1300,6 +1352,7 @@ var registerIcons = function () {
 };
 
 exports.Button = Button;
+exports.CheckboxField = CheckBoxField;
 exports.Col = Col;
 exports.ColorPicker = ColorPicker;
 exports.Dialog = Dialog;

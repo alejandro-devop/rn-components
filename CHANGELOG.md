@@ -18,3 +18,4 @@
 - [added]: IconButton component
 - [added]: Base dialog component
 - [added]: Icons: 'palette', 'dumbbell', 'house', 'image', 'phone', 'bars', 'star', 'location', 'music', 'heart', 'arrow-right', 'arrow-down', 'arrow-up', 'arrow-left', 'bomb', 'poo', 'camera-retro', 'cloud', 'comment', 'comment-alt', 'comment-alt','hippo','face-smile','calendar-days','paperclip','file','file-alt','shopping-cart','clipboard','filter','circle-info','car','ghost','apple-alt','circle-user','pen','umbrella','gift', 'film', 'list', 'gear', 'trash', 'circle-up', 'circle-down', 'rotate-right', 'bookmark', 'print', 'camera', 'minus', 'share', 'fire', 'plane', 'magnet', 'hand', 'folder', 'folder-open', 'money-bill', 'thumbs-up', 'thumbs-down',
+- [added]: Label component

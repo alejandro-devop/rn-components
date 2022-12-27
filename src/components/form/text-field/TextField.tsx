@@ -4,6 +4,7 @@ import styles, { ParamsGiven, StyleGuide } from './styles'
 import { useStyling, usePalette } from '@alejandro.dev/rn-themizer'
 import { TextFieldProps } from './types'
 import Icon from '../../icon'
+import FormLabel from '../form-label'
 
 const TextField: React.FC<TextFieldProps> = ({
     icon,
@@ -44,9 +45,11 @@ const TextField: React.FC<TextFieldProps> = ({
     const WrapperComponent: any = onlyMask && onPress ? TouchableOpacity : View
     return (
         <View style={styling.root}>
-            <View style={styling.labelWrapper}>
-                {label && <Text style={styling.label}>{label}</Text>}
-            </View>
+            {label && (
+                <FormLabel primary secondary={secondary}>
+                    {label}
+                </FormLabel>
+            )}
             <View style={styling.inputRow}>
                 <WrapperComponent style={styling.inputWrapper} onPress={onPress}>
                     {icon && (

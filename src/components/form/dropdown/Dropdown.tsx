@@ -7,13 +7,20 @@ import Icon from '../../icon'
 import Dialog from '../../dialog'
 import ListRenderer from './ListRenderer'
 import IconButton from '../../icon-button'
-import { TextFieldProps } from '../../../components/form/text-field/types'
 
 interface DropDownProps {
     options: { value: any; label: string; icon?: string }[]
+    onBlur?: () => void
+    onChange?: (eventInfo: { name?: string; value?: string }) => void
+    onFocus?: () => void
+    placeholder?: string
+    label?: string
+    name?: string
+    secondary?: boolean
+    value?: string
 }
 
-const DropDown: React.FC<DropDownProps & TextFieldProps> = ({
+const DropDown: React.FC<DropDownProps> = ({
     options,
     onChange,
     label,

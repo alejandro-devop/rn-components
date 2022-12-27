@@ -6,6 +6,7 @@ import Title from './title'
 import TextField from './form/text-field'
 import Image from './image'
 import IconButton from './icon-button'
+import CheckboxField from './form/checkbox-field'
 import Dialog from './dialog'
 import DropDown from './form/dropdown'
 import ColorPicker from './form/color-picker'
@@ -14,6 +15,7 @@ import Grid, { Col, Row, RowCol } from './grid'
 
 export {
     Button,
+    CheckboxField,
     Col,
     ColorPicker,
     Dialog,

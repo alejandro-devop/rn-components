@@ -1,14 +1,34 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { View, TouchableOpacity } from 'react-native'
 import styles, { ParamsGiven, StyleGuide } from './styles'
 import { useStyling } from '@alejandro.dev/rn-themizer'
+import FormLabel from '../form-label'
+import Icon from '../../icon'
 
-const CheckBoxField: React.FC = () => {
-    const styling = useStyling<StyleGuide, ParamsGiven>(styles)
+interface CheckBoxFieldProps {
+    label?: string
+    checked?: boolean
+    primary?: boolean
+    secondary?: boolean
+    onPress?: () => void
+}
 
+const CheckBoxField: React.FC<CheckBoxFieldProps> = ({
+    label,
+    checked,
+    primary,
+    secondary,
+    onPress
+}) => {
+    const styling = useStyling<StyleGuide, ParamsGiven>(styles, { primary, secondary })
     return (
         <View style={styling.root}>
-            <Text>CheckBoxField</Text>
+            <TouchableOpacity style={styling.controlWrapper} onPress={onPress}>
+                {checked && <Icon name="check" style={styling.controlIcon} />}
+            </TouchableOpacity>
+            <TouchableOpacity onPress={onPress}>
+                <FormLabel spacingBottom={false}>{label}</FormLabel>
+            </TouchableOpacity>
         </View>
     )
 }

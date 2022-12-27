@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import { useStyling } from '@alejandro.dev/rn-themizer'
 import styles, { ParamsType, StyleGuide } from './styles'
 import Icon from '../icon'
@@ -13,7 +13,7 @@ interface IconButtonProps {
     disabled?: boolean
 }
 
-const IconButton: React.FC<IconButtonProps> = ({ icon, variant, size, disabled }) => {
+const IconButton: React.FC<IconButtonProps> = ({ icon, variant, size, disabled, onPress }) => {
     const styling = useStyling<StyleGuide, ParamsType>(styles, {
         variant,
         disabled,
@@ -27,9 +27,9 @@ const IconButton: React.FC<IconButtonProps> = ({ icon, variant, size, disabled }
         }[size || 'md']
     }, [size])
     return (
-        <View style={styling.root}>
+        <TouchableOpacity onPress={onPress} disabled={disabled} style={styling.root}>
             <Icon name={icon} style={styling.icon} size={iconSize} />
-        </View>
+        </TouchableOpacity>
     )
 }
 
