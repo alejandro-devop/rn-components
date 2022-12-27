@@ -39,7 +39,7 @@ const styles: StyleDefType<StyleGuide, ParamsType> = ({
                 ...size(35)
             },
             md: {
-                ...size(50)
+                ...size(48)
             },
             lg: {
                 ...size(60)

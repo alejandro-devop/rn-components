@@ -5,7 +5,7 @@ import styles, { ParamsType, StyleGuide } from './list.styles'
 import ListItemRenderer from './ListItemRenderer'
 
 interface ListRendererProps {
-    options?: { value: any; label: string }[]
+    options?: { value: any; label: string; icon?: any }[]
     onSelctItem: (itemId: any) => void
     selectedValue?: any
 }
@@ -19,6 +19,7 @@ const ListRenderer: React.FC<ListRendererProps> = ({ options, onSelctItem, selec
                     <ListItemRenderer
                         active={item.value === selectedValue}
                         label={item.label}
+                        icon={item.icon}
                         key={`item-${key}`}
                         onSelect={() => {
                             onSelctItem(item.value)

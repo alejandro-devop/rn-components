@@ -49,7 +49,8 @@ const styling: StyleDefType<StyleGuide, ParamsGiven> = ({
         width: fromVars('textField.inputWrapper.height', 40),
         borderRadius: 100,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        transform: [{ translateX: -1 }]
     },
     input: {
         height: '100%',

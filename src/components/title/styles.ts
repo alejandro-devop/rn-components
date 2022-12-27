@@ -17,16 +17,16 @@ const styles: StyleDefType<StyleGuide, ParamsGiven> = ({ params, applyFor }) => 
     title: {
         ...applyFor(params?.size, {
             '1': {
-                fontSize: 32
-            },
-            '2': {
                 fontSize: 28
             },
-            '3': {
+            '2': {
                 fontSize: 24
             },
-            '4': {
+            '3': {
                 fontSize: 20
+            },
+            '4': {
+                fontSize: 18
             },
             '5': {
                 fontSize: 16

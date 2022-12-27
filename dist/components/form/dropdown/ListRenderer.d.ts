@@ -3,6 +3,7 @@ interface ListRendererProps {
     options?: {
         value: any;
         label: string;
+        icon?: any;
     }[];
     onSelctItem: (itemId: any) => void;
     selectedValue?: any;

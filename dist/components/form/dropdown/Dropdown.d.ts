@@ -4,6 +4,7 @@ interface DropDownProps {
     options: {
         value: any;
         label: string;
+        icon?: string;
     }[];
 }
 declare const DropDown: React.FC<DropDownProps & TextFieldProps>;

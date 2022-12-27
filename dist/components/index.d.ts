@@ -10,4 +10,5 @@ import Dialog from './dialog';
 import DropDown from './form/dropdown';
 import ColorPicker from './form/color-picker';
 import IconPicker from './form/icon-picker';
-export { Button, Icon, IconButton, PasswordField, Text, TextField, Title, Image, Dialog, DropDown, ColorPicker, IconPicker };
+import Grid, { Col, Row, RowCol } from './grid';
+export { Button, Col, ColorPicker, Dialog, DropDown, Grid, Icon, IconButton, IconPicker, Image, PasswordField, Row, RowCol, Text, TextField, Title };

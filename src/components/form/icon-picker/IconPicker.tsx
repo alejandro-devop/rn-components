@@ -22,6 +22,7 @@ const IconPicker: React.FC<IconPickerProps & TextFieldProps> = ({
 }) => {
     const styling = useStyling<StyleGuide, ParamsType>(styles)
     const [open, setOpen] = React.useState(false)
+    const [query, setQuery] = React.useState('')
     const [selectedIcon, setSelected] = React.useState<any>(value)
     const toggleOpen = () => setOpen(!open)
 
@@ -31,6 +32,17 @@ const IconPicker: React.FC<IconPickerProps & TextFieldProps> = ({
         }
         setOpen(false)
     }
+
+    const iconsToDisplay = React.useMemo(() => {
+        let output = [...iconType]
+        if (query && query.length > 0) {
+            output = output.filter((item) => {
+                const exp = new RegExp(`.*${query.toLocaleLowerCase()}.*`)
+                return item.match(exp)
+            })
+        }
+        return output
+    }, [query, iconType])
 
     const displayStyles = {
         backgroundColor: selectedIcon
@@ -55,9 +67,16 @@ const IconPicker: React.FC<IconPickerProps & TextFieldProps> = ({
                 </TouchableOpacity>
             </View>
             <Dialog open={open} onClose={toggleOpen} title={placeholder || label}>
+                <TextField
+                    autoCapitalize="none"
+                    icon="search"
+                    placeholder="Search for an icon"
+                    onChange={({ value }) => setQuery(value as string)}
+                    value={query}
+                />
                 <ScrollView>
                     <View style={styling.contentWrapper}>
-                        {iconType.map((item) => (
+                        {iconsToDisplay.map((item) => (
                             <TouchableOpacity
                                 style={classNames(
                                     {

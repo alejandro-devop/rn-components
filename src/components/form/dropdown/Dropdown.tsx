@@ -10,7 +10,7 @@ import IconButton from '../../icon-button'
 import { TextFieldProps } from '../../../components/form/text-field/types'
 
 interface DropDownProps {
-    options: { value: any; label: string }[]
+    options: { value: any; label: string; icon?: string }[]
 }
 
 const DropDown: React.FC<DropDownProps & TextFieldProps> = ({
@@ -25,12 +25,14 @@ const DropDown: React.FC<DropDownProps & TextFieldProps> = ({
     const [open, setOpen] = React.useState(false)
     const [selected, setSelected] = React.useState(null)
     const [displayLabel, setDisplayLabel] = React.useState<string | undefined>()
+    const [displayIcon, setDisplayIcon] = React.useState<string | undefined>()
     const toggleOpen = () => setOpen(!open)
 
     const onSelect = () => {
         // handle on change
         const itemLabel = options.find((item) => item.value === selected)
         setDisplayLabel(itemLabel?.label)
+        setDisplayIcon(itemLabel?.icon)
         if (onChange) {
             onChange({ name, value: selected as any })
         }
@@ -42,6 +44,7 @@ const DropDown: React.FC<DropDownProps & TextFieldProps> = ({
             <View style={styling.root}>
                 <TextField
                     label={label}
+                    icon={displayIcon as any}
                     placeholder={placeholder}
                     {...props}
                     onlyMask

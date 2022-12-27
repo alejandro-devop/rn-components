@@ -10,18 +10,23 @@ import Dialog from './dialog'
 import DropDown from './form/dropdown'
 import ColorPicker from './form/color-picker'
 import IconPicker from './form/icon-picker'
+import Grid, { Col, Row, RowCol } from './grid'
 
 export {
     Button,
-    Icon,
-    IconButton,
-    PasswordField,
-    Text,
-    TextField,
-    Title,
-    Image,
+    Col,
+    ColorPicker,
     Dialog,
     DropDown,
-    ColorPicker,
-    IconPicker
+    Grid,
+    Icon,
+    IconButton,
+    IconPicker,
+    Image,
+    PasswordField,
+    Row,
+    RowCol,
+    Text,
+    TextField,
+    Title
 }

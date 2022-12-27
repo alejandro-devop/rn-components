@@ -65,13 +65,22 @@ const styling: StyleDefType<StyleGuide, ParamsGiven> = ({
             padding: 10,
             paddingHorizontal: params?.rounded ? 20 : 10,
             marginBottom: variables?.buttons?.marginBottom,
+            backgroundColor: '#FFF',
+            shadowColor: '#000',
+            shadowOffset: {
+                width: 0,
+                height: 4
+            },
+            shadowOpacity: 0.1,
+            shadowRadius: 1,
+            elevation: 4,
             ...applyFor(params?.variant, {
                 default: {},
                 solid: {
                     backgroundColor: buttonColor
                 },
                 outline: {
-                    borderWidth: 2,
+                    borderWidth: 3,
                     borderColor: buttonColor
                 }
             }),
