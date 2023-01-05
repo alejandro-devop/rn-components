@@ -13,6 +13,7 @@ import ColorPicker from './form/color-picker'
 import IconPicker from './form/icon-picker'
 import Grid, { Col, Row, RowCol } from './grid'
 import SwitchField from './form/switch-field'
+import NumberPickerField from './form/number-picker-field'
 
 export {
     Button,
@@ -27,6 +28,7 @@ export {
     IconPicker,
     Image,
     PasswordField,
+    NumberPickerField,
     Row,
     RowCol,
     SwitchField,

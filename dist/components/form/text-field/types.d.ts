@@ -1,4 +1,5 @@
 import { IconNameType } from '../../icon/types';
+import { KeyboardTypeOptions } from 'react-native';
 export interface TextFieldProps {
     label?: string;
     secondary?: boolean;
@@ -16,6 +17,7 @@ export interface TextFieldProps {
     onActionTriggered?: () => void;
     isPassword?: boolean;
     autoCapitalize?: 'characters' | 'words' | 'sentences' | 'none';
+    keyboardType?: KeyboardTypeOptions;
     onlyMask?: boolean;
     onPress?: () => void;
 }

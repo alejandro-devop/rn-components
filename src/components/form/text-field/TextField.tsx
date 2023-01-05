@@ -21,6 +21,7 @@ const TextField: React.FC<TextFieldProps> = ({
     onActionTriggered,
     onlyMask,
     onPress,
+    keyboardType,
     ...otherProps
 }) => {
     const [focussed, setFocussed] = React.useState(false)
@@ -67,6 +68,7 @@ const TextField: React.FC<TextFieldProps> = ({
                             onFocus={handleFocussed}
                             onBlur={handleLostFocus}
                             onChangeText={handleChange}
+                            keyboardType={keyboardType}
                             {...otherProps}
                         />
                     ) : (

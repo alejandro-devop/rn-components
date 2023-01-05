@@ -13,4 +13,5 @@ import ColorPicker from './form/color-picker';
 import IconPicker from './form/icon-picker';
 import Grid, { Col, Row, RowCol } from './grid';
 import SwitchField from './form/switch-field';
-export { Button, CheckboxField, Col, ColorPicker, Dialog, DropDown, Grid, Icon, IconButton, IconPicker, Image, PasswordField, Row, RowCol, SwitchField, Text, TextField, Title };
+import NumberPickerField from './form/number-picker-field';
+export { Button, CheckboxField, Col, ColorPicker, Dialog, DropDown, Grid, Icon, IconButton, IconPicker, Image, PasswordField, NumberPickerField, Row, RowCol, SwitchField, Text, TextField, Title };

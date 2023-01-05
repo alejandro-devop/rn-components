@@ -485,7 +485,7 @@ var styling$2 = function (_a) {
     });
 };
 
-var styles$b = function (_a) {
+var styles$c = function (_a) {
     var fromVars = _a.fromVars, applyIf = _a.applyIf, palette = _a.palette, params = _a.params;
     return ({
         labelWrapper: {
@@ -516,7 +516,7 @@ var Text = function (_a) {
 
 var FormLabel = function (_a) {
     var children = _a.children, primary = _a.primary, secondary = _a.secondary;
-    var styling = rnThemizer.useStyling(styles$b, { primary: primary, secondary: secondary });
+    var styling = rnThemizer.useStyling(styles$c, { primary: primary, secondary: secondary });
     return (React__default.default.createElement(reactNative.View, { style: styling.labelWrapper }, children && React__default.default.createElement(Text, { style: styling.label }, children)));
 };
 FormLabel.defaultProps = {
@@ -525,7 +525,7 @@ FormLabel.defaultProps = {
 
 var TextField = function (_a) {
     var _b;
-    var icon = _a.icon, label = _a.label, onBlur = _a.onBlur, onChange = _a.onChange, name = _a.name, onFocus = _a.onFocus, placeholder = _a.placeholder, secondary = _a.secondary, value = _a.value, actionIcon = _a.actionIcon, isPassword = _a.isPassword, onActionTriggered = _a.onActionTriggered, onlyMask = _a.onlyMask, onPress = _a.onPress, otherProps = __rest(_a, ["icon", "label", "onBlur", "onChange", "name", "onFocus", "placeholder", "secondary", "value", "actionIcon", "isPassword", "onActionTriggered", "onlyMask", "onPress"]);
+    var icon = _a.icon, label = _a.label, onBlur = _a.onBlur, onChange = _a.onChange, name = _a.name, onFocus = _a.onFocus, placeholder = _a.placeholder, secondary = _a.secondary, value = _a.value, actionIcon = _a.actionIcon, isPassword = _a.isPassword, onActionTriggered = _a.onActionTriggered, onlyMask = _a.onlyMask, onPress = _a.onPress, keyboardType = _a.keyboardType, otherProps = __rest(_a, ["icon", "label", "onBlur", "onChange", "name", "onFocus", "placeholder", "secondary", "value", "actionIcon", "isPassword", "onActionTriggered", "onlyMask", "onPress", "keyboardType"]);
     var _c = React__default.default.useState(false), focussed = _c[0], setFocussed = _c[1];
     var palette = rnThemizer.usePalette();
     var styling = rnThemizer.useStyling(styling$2, { focussed: focussed, secondary: secondary });
@@ -551,7 +551,7 @@ var TextField = function (_a) {
             React__default.default.createElement(WrapperComponent, { style: styling.inputWrapper, onPress: onPress },
                 icon && (React__default.default.createElement(reactNative.View, { style: styling.iconWrapper },
                     React__default.default.createElement(Icon, { name: icon, style: styling.icon }))),
-                !onlyMask ? (React__default.default.createElement(reactNative.TextInput, __assign({ secureTextEntry: isPassword, style: styling.input, value: value, placeholder: placeholder, placeholderTextColor: (_b = palette.textField) === null || _b === void 0 ? void 0 : _b.placeholderColor, onFocus: handleFocussed, onBlur: handleLostFocus, onChangeText: handleChange }, otherProps))) : (React__default.default.createElement(reactNative.Text, { style: styling.maskedValue }, value))),
+                !onlyMask ? (React__default.default.createElement(reactNative.TextInput, __assign({ secureTextEntry: isPassword, style: styling.input, value: value, placeholder: placeholder, placeholderTextColor: (_b = palette.textField) === null || _b === void 0 ? void 0 : _b.placeholderColor, onFocus: handleFocussed, onBlur: handleLostFocus, onChangeText: handleChange, keyboardType: keyboardType }, otherProps))) : (React__default.default.createElement(reactNative.Text, { style: styling.maskedValue }, value))),
             actionIcon && (React__default.default.createElement(reactNative.TouchableOpacity, { style: styling.actionButton, onPress: onActionTriggered },
                 React__default.default.createElement(Icon, { name: actionIcon, style: styling.actionIcon }))))));
 };
@@ -563,7 +563,7 @@ var PasswordField = function (_a) {
     return (React__default.default.createElement(TextField, __assign({ label: label, icon: "lock", actionIcon: opened ? 'eye-slash' : 'eye', onActionTriggered: handleAction, isPassword: !opened }, otherProps)));
 };
 
-var styles$a = function (_a) {
+var styles$b = function (_a) {
     var params = _a.params, applyFor = _a.applyFor;
     return ({
         root: {
@@ -595,7 +595,7 @@ var styles$a = function (_a) {
 
 var Title = function (_a) {
     var children = _a.children, size = _a.size, style = _a.style;
-    var styling = rnThemizer.useStyling(styles$a, {
+    var styling = rnThemizer.useStyling(styles$b, {
         size: size
     });
     return (React__default.default.createElement(reactNative.View, { style: styling.root },
@@ -610,7 +610,7 @@ var Image = function (_a) {
     return React__default.default.createElement(reactNative.Image, { source: src, style: style });
 };
 
-var styles$9 = function (_a) {
+var styles$a = function (_a) {
     var _b;
     var params = _a.params, size = _a.size, palette = _a.palette, applyFor = _a.applyFor, applyIf = _a.applyIf;
     return ({
@@ -645,7 +645,7 @@ var styles$9 = function (_a) {
 
 var IconButton = function (_a) {
     var icon = _a.icon, variant = _a.variant, size = _a.size, disabled = _a.disabled, onPress = _a.onPress;
-    var styling = rnThemizer.useStyling(styles$9, {
+    var styling = rnThemizer.useStyling(styles$a, {
         variant: variant,
         disabled: disabled,
         size: size
@@ -697,7 +697,7 @@ var CheckBoxField = function (_a) {
             React__default.default.createElement(FormLabel, { spacingBottom: false }, label))));
 };
 
-var styles$8 = function (_a) { return ({
+var styles$9 = function (_a) { return ({
     childContent: {
         flex: 1
     },
@@ -733,7 +733,7 @@ var styles$8 = function (_a) { return ({
 
 var Dialog = function (_a) {
     var open = _a.open, onClose = _a.onClose, children = _a.children, title = _a.title;
-    var styling = rnThemizer.useStyling(styles$8);
+    var styling = rnThemizer.useStyling(styles$9);
     return (React__default.default.createElement(reactNative.Modal, { animationType: "fade", transparent: true, visible: open, onRequestClose: onClose },
         React__default.default.createElement(reactNative.View, { style: styling.root },
             React__default.default.createElement(reactNative.View, { style: styling.container },
@@ -744,7 +744,7 @@ var Dialog = function (_a) {
                 open && React__default.default.createElement(reactNative.View, { style: styling.childContent }, children)))));
 };
 
-var styles$7 = function (_a) { return ({
+var styles$8 = function (_a) { return ({
     actionsWrapper: {
         alignItems: 'center',
         paddingVertical: 10
@@ -758,13 +758,13 @@ var styles$7 = function (_a) { return ({
     root: {}
 }); };
 
-var styles$6 = function (_a) { return ({
+var styles$7 = function (_a) { return ({
     root: {
         paddingHorizontal: 20
     }
 }); };
 
-var styles$5 = function (_a) {
+var styles$6 = function (_a) {
     var size = _a.size, palette = _a.palette, applyIf = _a.applyIf, params = _a.params;
     return ({
         label: { fontSize: 18, flex: 1, marginLeft: 10 },
@@ -786,7 +786,7 @@ var styles$5 = function (_a) {
 
 var ListItemRenderer = function (_a) {
     var label = _a.label, active = _a.active, icon = _a.icon, onSelect = _a.onSelect;
-    var styling = rnThemizer.useStyling(styles$5, { active: active });
+    var styling = rnThemizer.useStyling(styles$6, { active: active });
     return (React__default.default.createElement(reactNative.TouchableOpacity, { style: styling.root, onPress: onSelect },
         icon && (React__default.default.createElement(reactNative.View, null,
             React__default.default.createElement(Icon, { name: icon }))),
@@ -796,7 +796,7 @@ var ListItemRenderer = function (_a) {
 
 var ListRenderer = function (_a) {
     var options = _a.options, onSelctItem = _a.onSelctItem, selectedValue = _a.selectedValue;
-    var styling = rnThemizer.useStyling(styles$6);
+    var styling = rnThemizer.useStyling(styles$7);
     return (React__default.default.createElement(reactNative.ScrollView, null,
         React__default.default.createElement(reactNative.View, { style: styling.root }, options === null || options === void 0 ? void 0 : options.map(function (item, key) { return (React__default.default.createElement(ListItemRenderer, { active: item.value === selectedValue, label: item.label, icon: item.icon, key: "item-".concat(key), onSelect: function () {
                 onSelctItem(item.value);
@@ -805,7 +805,7 @@ var ListRenderer = function (_a) {
 
 var DropDown = function (_a) {
     var options = _a.options, onChange = _a.onChange, label = _a.label, name = _a.name, placeholder = _a.placeholder, props = __rest(_a, ["options", "onChange", "label", "name", "placeholder"]);
-    var styling = rnThemizer.useStyling(styles$7);
+    var styling = rnThemizer.useStyling(styles$8);
     var _b = React__default.default.useState(false), open = _b[0], setOpen = _b[1];
     var _c = React__default.default.useState(null), selected = _c[0], setSelected = _c[1];
     var _d = React__default.default.useState(), displayLabel = _d[0], setDisplayLabel = _d[1];
@@ -832,7 +832,7 @@ var DropDown = function (_a) {
                 React__default.default.createElement(IconButton, { onPress: onSelect, icon: "check", variant: "primary", disabled: !selected })))));
 };
 
-var styles$4 = function (_a) { return ({
+var styles$5 = function (_a) { return ({
     actionsWrapper: {
         alignItems: 'center',
         paddingVertical: 10
@@ -862,7 +862,7 @@ var styles$4 = function (_a) { return ({
 
 var ColorPicker = function (_a) {
     var onChange = _a.onChange, label = _a.label, placeholder = _a.placeholder, name = _a.name, value = _a.value, props = __rest(_a, ["onChange", "label", "placeholder", "name", "value"]);
-    var styling = rnThemizer.useStyling(styles$4);
+    var styling = rnThemizer.useStyling(styles$5);
     var _b = React__default.default.useState(false), open = _b[0], setOpen = _b[1];
     var _c = React__default.default.useState(value), selectedColor = _c[0], setSelectedColor = _c[1];
     var ref = React__default.default.useRef(null);
@@ -912,7 +912,7 @@ var ColorPicker = function (_a) {
                 React__default.default.createElement(IconButton, { onPress: onSelect, icon: "check", variant: "primary", disabled: !selectedColor })))));
 };
 
-var styles$3 = function (_a) {
+var styles$4 = function (_a) {
     var size = _a.size, palette = _a.palette;
     return ({
         actionsWrapper: {
@@ -1224,7 +1224,7 @@ var classNames = function (names, styles) {
 
 var IconPicker = function (_a) {
     var onChange = _a.onChange, label = _a.label, placeholder = _a.placeholder, name = _a.name, value = _a.value, props = __rest(_a, ["onChange", "label", "placeholder", "name", "value"]);
-    var styling = rnThemizer.useStyling(styles$3);
+    var styling = rnThemizer.useStyling(styles$4);
     var _b = React__default.default.useState(false), open = _b[0], setOpen = _b[1];
     var _c = React__default.default.useState(''), query = _c[0], setQuery = _c[1];
     var _d = React__default.default.useState(value), selectedIcon = _d[0], setSelected = _d[1];
@@ -1278,7 +1278,7 @@ var GridConfiguratorContext = React__default.default.createContext({
     rowMargin: 10
 });
 
-var styles$2 = function (_a) {
+var styles$3 = function (_a) {
     var params = _a.params;
     return ({
         root: {
@@ -1292,11 +1292,11 @@ var styles$2 = function (_a) {
 var Row = function (_a) {
     var children = _a.children;
     var rowMargin = React.useContext(GridConfiguratorContext).rowMargin;
-    var styling = rnThemizer.useStyling(styles$2, { rowMargin: rowMargin });
+    var styling = rnThemizer.useStyling(styles$3, { rowMargin: rowMargin });
     return React__default.default.createElement(reactNative.View, { style: styling.root }, children);
 };
 
-var styles$1 = function (_a) {
+var styles$2 = function (_a) {
     var params = _a.params;
     return ({
         root: {
@@ -1308,14 +1308,14 @@ var styles$1 = function (_a) {
 
 var Col = function (_a) {
     var children = _a.children, colSize = _a.colSize;
-    var styling = rnThemizer.useStyling(styles$1, { colSize: colSize });
+    var styling = rnThemizer.useStyling(styles$2, { colSize: colSize });
     return React__default.default.createElement(reactNative.View, { style: styling.root }, children);
 };
 Col.defaultProps = {
     colSize: 1
 };
 
-var styles = function (_a) {
+var styles$1 = function (_a) {
     var params = _a.params;
     return ({
         root: {
@@ -1328,7 +1328,7 @@ var styles = function (_a) {
 var GridWraapper = function (_a) {
     var children = _a.children;
     var contentPadding = React.useContext(GridConfiguratorContext).contentPadding;
-    var styling = rnThemizer.useStyling(styles, { contentPadding: contentPadding });
+    var styling = rnThemizer.useStyling(styles$1, { contentPadding: contentPadding });
     return React__default.default.createElement(reactNative.View, { style: styling.root }, children);
 };
 
@@ -1390,6 +1390,56 @@ var SwitchField = function (_a) {
         React__default.default.createElement(FormLabel, { spacingBottom: false }, label)));
 };
 
+var styles = function (_a) { return ({
+    inputInnerWrapper: {
+        flex: 1,
+        paddingTop: 15
+    },
+    inputWrapper: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    root: {}
+}); };
+
+var NumberPickerField = function (_a) {
+    var label = _a.label, secondary = _a.secondary, value = _a.value, _b = _a.step, step = _b === void 0 ? 1 : _b, _c = _a.min, min = _c === void 0 ? 0 : _c, _d = _a.max, max = _d === void 0 ? 1000 : _d;
+    var styling = rnThemizer.useStyling(styles);
+    var _e = React__default.default.useState(parseInt("".concat(value), 10)), counterData = _e[0], setCounterData = _e[1];
+    var handleAdd = React__default.default.useCallback(function () {
+        var newData = counterData + step;
+        setCounterData(newData);
+    }, [counterData, setCounterData]);
+    var handleSubtract = React__default.default.useCallback(function () {
+        var newData = counterData - step;
+        setCounterData(newData);
+    }, [counterData, setCounterData]);
+    var handleInputChange = React__default.default.useCallback(function (_a) {
+        var value = _a.value;
+        var newValue = parseInt(value, 10);
+        if (newValue < min) {
+            newValue = min;
+        }
+        if (newValue > max) {
+            newValue = max;
+        }
+        setCounterData(newValue);
+    }, []);
+    return (React__default.default.createElement(reactNative.View, { style: styling.root },
+        React__default.default.createElement(FormLabel, { primary: true, secondary: secondary }, label),
+        React__default.default.createElement(reactNative.View, { style: styling.inputWrapper },
+            React__default.default.createElement(IconButton, { disabled: counterData <= min, icon: "minus", onPress: handleSubtract, variant: "primary" }),
+            React__default.default.createElement(reactNative.View, { style: styling.inputInnerWrapper },
+                React__default.default.createElement(TextField, { value: "".concat(counterData), keyboardType: "number-pad", onChange: handleInputChange })),
+            React__default.default.createElement(IconButton, { disabled: counterData >= max, icon: "add", onPress: handleAdd, variant: "primary" }))));
+};
+NumberPickerField.defaultProps = {
+    step: 1,
+    value: '0',
+    min: 0,
+    max: 1000
+};
+
 var registerIcons = function () {
     fontawesomeSvgCore.library.add(faTag.faTag, faBrain.faBrain, faAdd.faAdd, faTags.faTags, faClock.faClock, faDumbbell.faDumbbell, faPalette.faPalette, faChevronRight.faChevronRight, faChevronLeft.faChevronLeft, faChevronUp.faChevronUp, faChevronDown.faChevronDown, faBed.faBed, faBedPulse.faBedPulse, faHeartPulse.faHeartPulse, faBattery.faBattery, faBell.faBell, faBook.faBook, faGlassWater.faGlassWater, faBriefcase.faBriefcase, faBoxArchive.faBoxArchive, faBox.faBox, faCalendar.faCalendar, faCaretUp.faCaretUp, faCaretDown.faCaretDown, faCheck.faCheck, faChartPie.faChartPie, faCircle.faCircle, faCircleCheck.faCircleCheck, faLock.faLock, faUser.faUser, faEye.faEye, faEyeSlash.faEyeSlash, faEllipsisVertical.faEllipsisVertical, faSearch.faSearch, faPlay.faPlay, faTimes.faTimes, faRefresh.faRefresh, faEnvelope.faEnvelope, faCogs.faCogs, faHome.faHome, faHouse.faHouse, faImage.faImage, faPhone.faPhone, faBars.faBars, faStar.faStar, faLocation.faLocation, faMusic.faMusic, faHeart.faHeart, faArrowRight.faArrowRight, faArrowDown.faArrowDown, faArrowUp.faArrowUp, faArrowLeft.faArrowLeft, faBomb.faBomb, faPoo.faPoo, faCameraRetro.faCameraRetro, faCloud.faCloud, faComment.faComment, faCommentAlt.faCommentAlt, faHippo.faHippo, faFaceSmile.faFaceSmile, faCalendarDays.faCalendarDays, faPaperclip.faPaperclip, faFile.faFile, faFileAlt.faFileAlt, faShoppingCart.faShoppingCart, faClipboard.faClipboard, faFilter.faFilter, faCircleInfo.faCircleInfo, faCar.faCar, faGhost.faGhost, faAppleAlt.faAppleAlt, faCircleUser.faCircleUser, faPen.faPen, faUmbrella.faUmbrella, faGift.faGift, faFilm.faFilm, faList.faList, faGear.faGear, faTrash.faTrash, faCircleUp.faCircleUp, faCircleDown.faCircleDown, faRotateRight.faRotateRight, faBookmark.faBookmark, faPrint.faPrint, faCamera.faCamera, faMinus.faMinus, faShare.faShare, faFire.faFire, faPlane.faPlane, faMagnet.faMagnet, faHand.faHand, faFolder.faFolder, faFolderOpen.faFolderOpen, faMoneyBill.faMoneyBill, faThumbsUp.faThumbsUp, faThumbsDown.faThumbsDown, faComments.faComments, faLemon.faLemon, faKey.faKey, faPaperPlane.faPaperPlane, faCode.faCode, faGlobe.faGlobe, faTruck.faTruck, faCity.faCity, faTicket.faTicket, faTree.faTree, faWifi.faWifi, faBicycle.faBicycle, faSliders.faSliders, faBrush.faBrush, faHashtag.faHashtag, faFlask.faFlask, faCompass.faCompass, faDumpsterFire.faDumpsterFire, faPerson.faPerson, faPersonDress.faPersonDress, faAddressBook.faAddressBook, faBath.faBath, faHandshake.faHandshake, faEarthAmericas.faEarthAmericas, faGamepad.faGamepad, faFeather.faFeather, faSun.faSun, faLink.faLink, faPenFancy.faPenFancy, faFish.faFish, faBug.faBug, faShop.faShop, faMugSaucer.faMugSaucer, faShirt.faShirt, faAnchor.faAnchor, faBagShopping.faBagShopping, faGauge.faGauge, faUserSecret.faUserSecret, faStethoscope.faStethoscope, faCarSide.faCarSide, faHandHoldingHeart.faHandHoldingHeart, faLocationPin.faLocationPin, faInfo.faInfo, faCross.faCross, faCreditCard.faCreditCard, faDatabase.faDatabase, faCopy.faCopy, faMobile.faMobile, faHourglass.faHourglass, faNewspaper.faNewspaper, faTable.faTable, faBuilding.faBuilding, faStore.faStore, faFlag.faFlag, faNetworkWired.faNetworkWired, faShield.faShield, faAddressCard.faAddressCard, faServer.faServer, faUserNurse.faUserNurse, faUserNinja.faUserNinja, faSchool.faSchool, faFileInvoice.faFileInvoice, faRocket.faRocket, faLaptop.faLaptop, faRestroom.faRestroom, faPowerOff.faPowerOff, faSitemap.faSitemap, faDesktop.faDesktop, faMoon.faMoon, faCalendarWeek.faCalendarWeek, faPause.faPause, faLanguage.faLanguage, faDoorOpen.faDoorOpen, faHotel.faHotel, faShower.faShower, faPlaceOfWorship.faPlaceOfWorship, faWallet.faWallet, faToggleOn.faToggleOn, faToggleOff.faToggleOff, faMotorcycle.faMotorcycle, faTrain.faTrain, faWrench.faWrench, faMicrochip.faMicrochip, faTrophy.faTrophy, faHospital.faHospital, faHammer.faHammer, faRobot.faRobot, faFileContract.faFileContract, faCrown.faCrown, faVirus.faVirus, faRepeat.faRepeat, faCube.faCube, faMedal.faMedal, faBullseye.faBullseye, faRadio.faRadio, faRoute.faRoute, faPlug.faPlug, faCalculator.faCalculator, faCertificate.faCertificate, faRoad.faRoad, faUserTie.faUserTie, faTruckMonster.faTruckMonster, faWarehouse.faWarehouse, faRuler.faRuler, faSoap.faSoap, faScroll.faScroll, faCoins.faCoins, faLightbulb.faLightbulb, faKeyboard.faKeyboard, faEraser.faEraser, faUnlock.faUnlock, faTablet.faTablet, faGlasses.faGlasses, faImages.faImages, faWandMagic.faWandMagic, faVest.faVest, faUtensils.faUtensils, faUserGraduate.faUserGraduate, faUserDoctor.faUserDoctor, faTv.faTv, faTooth.faTooth, faToolbox.faToolbox, faToiletPaper.faToiletPaper, faSocks.faSocks, faSignsPost.faSignsPost, faScrewdriverWrench.faScrewdriverWrench, faScrewdriver.faScrewdriver, faScissors.faScissors, faScaleBalanced.faScaleBalanced, faSackDollar.faSackDollar, faPizzaSlice.faPizzaSlice, faPaw.faPaw, faPanorama.faPanorama, faMoneyBill.faMoneyBill, faMessage.faMessage, faMapLocation.faMapLocation, faIceCream.faIceCream, faGlassWater.faGlassWater, faGasPump.faGasPump, faGaugeHigh.faGaugeHigh, faFaceAngry.faFaceAngry, faFaceSmileBeam.faFaceSmileBeam, faFaceKissBeam.faFaceKissBeam, faDog.faDog, faCubes.faCubes, faCouch.faCouch, faChildren.faChildren, faChartLine.faChartLine, faBurger.faBurger, faBullhorn.faBullhorn, faBucket.faBucket, faBroom.faBroom, faBreadSlice.faBreadSlice, faBoxesStacked.faBoxesStacked, faBoxOpen.faBoxOpen, faBowlingBall.faBowlingBall, faBowlRice.faBowlRice, faBottleWater.faBottleWater, faBookOpenReader.faBookOpenReader, faBookOpen.faBookOpen, faBone.faBone, faBan.faBan);
 };
@@ -1405,6 +1455,7 @@ exports.Icon = Icon;
 exports.IconButton = IconButton;
 exports.IconPicker = IconPicker;
 exports.Image = Image;
+exports.NumberPickerField = NumberPickerField;
 exports.PasswordField = PasswordField;
 exports.Row = Row;
 exports.RowCol = RowCol;
