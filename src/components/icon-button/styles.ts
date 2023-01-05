@@ -34,6 +34,15 @@ const styles: StyleDefType<StyleGuide, ParamsType> = ({
         alignItems: 'center',
         borderRadius: 100,
         backgroundColor: palette.buttons?.default,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 4
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 1,
+        marginHorizontal: 5,
+        elevation: 4,
         ...applyFor(params?.size, {
             sm: {
                 ...size(35)

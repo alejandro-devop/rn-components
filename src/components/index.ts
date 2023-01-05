@@ -12,6 +12,7 @@ import DropDown from './form/dropdown'
 import ColorPicker from './form/color-picker'
 import IconPicker from './form/icon-picker'
 import Grid, { Col, Row, RowCol } from './grid'
+import SwitchField from './form/switch-field'
 
 export {
     Button,
@@ -28,6 +29,7 @@ export {
     PasswordField,
     Row,
     RowCol,
+    SwitchField,
     Text,
     TextField,
     Title

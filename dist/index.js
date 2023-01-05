@@ -318,7 +318,7 @@ function __spreadArray(to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 }
 
-var styling$2 = function (_a) {
+var styling$3 = function (_a) {
     var _b, _c, _d, _e, _f, _g;
     var palette = _a.palette, params = _a.params, applyFor = _a.applyFor, valueFor = _a.valueFor, variables = _a.variables;
     /**
@@ -400,7 +400,7 @@ Icon.defaultProps = {
  */
 var Button = function (_a) {
     var children = _a.children, disabled = _a.disabled, onPress = _a.onPress, iconPlacement = _a.iconPlacement, icon = _a.icon, rounded = _a.rounded, variant = _a.variant, color = _a.color, loading = _a.loading, loadingText = _a.loadingText;
-    var styling = rnThemizer.useStyling(styling$2, {
+    var styling = rnThemizer.useStyling(styling$3, {
         disabled: disabled,
         variant: variant,
         color: color,
@@ -427,7 +427,7 @@ Button.defaultProps = {
     iconPlacement: 'right'
 };
 
-var styling$1 = function (_a) {
+var styling$2 = function (_a) {
     var fromPalette = _a.fromPalette, fromVars = _a.fromVars, applyIf = _a.applyIf, params = _a.params, palette = _a.palette;
     return ({
         actionButton: {
@@ -528,7 +528,7 @@ var TextField = function (_a) {
     var icon = _a.icon, label = _a.label, onBlur = _a.onBlur, onChange = _a.onChange, name = _a.name, onFocus = _a.onFocus, placeholder = _a.placeholder, secondary = _a.secondary, value = _a.value, actionIcon = _a.actionIcon, isPassword = _a.isPassword, onActionTriggered = _a.onActionTriggered, onlyMask = _a.onlyMask, onPress = _a.onPress, otherProps = __rest(_a, ["icon", "label", "onBlur", "onChange", "name", "onFocus", "placeholder", "secondary", "value", "actionIcon", "isPassword", "onActionTriggered", "onlyMask", "onPress"]);
     var _c = React__default.default.useState(false), focussed = _c[0], setFocussed = _c[1];
     var palette = rnThemizer.usePalette();
-    var styling = rnThemizer.useStyling(styling$1, { focussed: focussed, secondary: secondary });
+    var styling = rnThemizer.useStyling(styling$2, { focussed: focussed, secondary: secondary });
     var handleFocussed = React__default.default.useCallback(function () {
         setFocussed(true);
         if (onFocus)
@@ -622,7 +622,10 @@ var styles$9 = function (_a) {
                 color: '#FFF'
             }
         })),
-        root: __assign(__assign(__assign({ justifyContent: 'center', alignItems: 'center', borderRadius: 100, backgroundColor: (_b = palette.buttons) === null || _b === void 0 ? void 0 : _b.default }, applyFor(params === null || params === void 0 ? void 0 : params.size, {
+        root: __assign(__assign(__assign({ justifyContent: 'center', alignItems: 'center', borderRadius: 100, backgroundColor: (_b = palette.buttons) === null || _b === void 0 ? void 0 : _b.default, shadowColor: '#000', shadowOffset: {
+                width: 0,
+                height: 4
+            }, shadowOpacity: 0.1, shadowRadius: 1, marginHorizontal: 5, elevation: 4 }, applyFor(params === null || params === void 0 ? void 0 : params.size, {
             sm: __assign({}, size(35)),
             md: __assign({}, size(48)),
             lg: __assign({}, size(60))
@@ -662,7 +665,7 @@ IconButton.defaultProps = {
     size: 'md'
 };
 
-var styling = function (_a) {
+var styling$1 = function (_a) {
     var _b, _c;
     var palette = _a.palette, params = _a.params, applyIf = _a.applyIf;
     return ({
@@ -687,9 +690,9 @@ var styling = function (_a) {
 
 var CheckBoxField = function (_a) {
     var label = _a.label, checked = _a.checked, primary = _a.primary, secondary = _a.secondary, onPress = _a.onPress;
-    var styling$1 = rnThemizer.useStyling(styling, { primary: primary, secondary: secondary });
-    return (React__default.default.createElement(reactNative.View, { style: styling$1.root },
-        React__default.default.createElement(reactNative.TouchableOpacity, { style: styling$1.controlWrapper, onPress: onPress }, checked && React__default.default.createElement(Icon, { name: "check", style: styling$1.controlIcon })),
+    var styling = rnThemizer.useStyling(styling$1, { primary: primary, secondary: secondary });
+    return (React__default.default.createElement(reactNative.View, { style: styling.root },
+        React__default.default.createElement(reactNative.TouchableOpacity, { style: styling.controlWrapper, onPress: onPress }, checked && React__default.default.createElement(Icon, { name: "check", style: styling.controlIcon })),
         React__default.default.createElement(reactNative.TouchableOpacity, { onPress: onPress },
             React__default.default.createElement(FormLabel, { spacingBottom: false }, label))));
 };
@@ -1347,6 +1350,46 @@ var RowCol = function (_a) {
         React__default.default.createElement(Col, null, children)));
 };
 
+var defaultControlSize = 30;
+var styling = function (_a) {
+    var _b, _c, _d;
+    var palette = _a.palette, params = _a.params, applyIf = _a.applyIf, size = _a.size;
+    return ({
+        controlWrapper: __assign(__assign(__assign({ width: ((params === null || params === void 0 ? void 0 : params.controlSize) || defaultControlSize) * 2 - 10, height: (params === null || params === void 0 ? void 0 : params.controlSize) || defaultControlSize, borderRadius: 100, alignItems: 'center', justifyContent: 'center', backgroundColor: "".concat((_b = palette.buttons) === null || _b === void 0 ? void 0 : _b.default, "7f") }, applyIf(!(params === null || params === void 0 ? void 0 : params.primary) && !(params === null || params === void 0 ? void 0 : params.secondary) && (params === null || params === void 0 ? void 0 : params.checked), {
+            backgroundColor: (_c = palette.buttons) === null || _c === void 0 ? void 0 : _c.default
+        })), applyIf((params === null || params === void 0 ? void 0 : params.primary) && (params === null || params === void 0 ? void 0 : params.checked), {
+            backgroundColor: palette.primaryColor
+        })), applyIf((params === null || params === void 0 ? void 0 : params.secondary) && (params === null || params === void 0 ? void 0 : params.checked), {
+            backgroundColor: palette.secondaryColor
+        })),
+        controlIcon: __assign(__assign(__assign(__assign({}, size((params === null || params === void 0 ? void 0 : params.controlSize) || defaultControlSize)), { borderWidth: 2, borderColor: (_d = palette.buttons) === null || _d === void 0 ? void 0 : _d.default, backgroundColor: '#FFF', borderRadius: 100, position: 'absolute' }), applyIf(!(params === null || params === void 0 ? void 0 : params.checked), {
+            left: 0
+        })), applyIf(params === null || params === void 0 ? void 0 : params.checked, {
+            right: 0
+        })),
+        root: {
+            flexDirection: 'row',
+            alignItems: 'center',
+            paddingHorizontal: 20,
+            marginBottom: 10
+        }
+    });
+};
+
+var SwitchField = function (_a) {
+    var label = _a.label, checked = _a.checked, onPress = _a.onPress, primary = _a.primary, secondary = _a.secondary;
+    var styling$1 = rnThemizer.useStyling(styling, {
+        checked: checked,
+        controlSize: 34,
+        primary: primary,
+        secondary: secondary
+    });
+    return (React__default.default.createElement(reactNative.View, { style: styling$1.root },
+        React__default.default.createElement(reactNative.TouchableOpacity, { style: styling$1.controlWrapper, onPress: onPress },
+            React__default.default.createElement(reactNative.View, { style: styling$1.controlIcon })),
+        React__default.default.createElement(FormLabel, { spacingBottom: false }, label)));
+};
+
 var registerIcons = function () {
     fontawesomeSvgCore.library.add(faTag.faTag, faBrain.faBrain, faAdd.faAdd, faTags.faTags, faClock.faClock, faDumbbell.faDumbbell, faPalette.faPalette, faChevronRight.faChevronRight, faChevronLeft.faChevronLeft, faChevronUp.faChevronUp, faChevronDown.faChevronDown, faBed.faBed, faBedPulse.faBedPulse, faHeartPulse.faHeartPulse, faBattery.faBattery, faBell.faBell, faBook.faBook, faGlassWater.faGlassWater, faBriefcase.faBriefcase, faBoxArchive.faBoxArchive, faBox.faBox, faCalendar.faCalendar, faCaretUp.faCaretUp, faCaretDown.faCaretDown, faCheck.faCheck, faChartPie.faChartPie, faCircle.faCircle, faCircleCheck.faCircleCheck, faLock.faLock, faUser.faUser, faEye.faEye, faEyeSlash.faEyeSlash, faEllipsisVertical.faEllipsisVertical, faSearch.faSearch, faPlay.faPlay, faTimes.faTimes, faRefresh.faRefresh, faEnvelope.faEnvelope, faCogs.faCogs, faHome.faHome, faHouse.faHouse, faImage.faImage, faPhone.faPhone, faBars.faBars, faStar.faStar, faLocation.faLocation, faMusic.faMusic, faHeart.faHeart, faArrowRight.faArrowRight, faArrowDown.faArrowDown, faArrowUp.faArrowUp, faArrowLeft.faArrowLeft, faBomb.faBomb, faPoo.faPoo, faCameraRetro.faCameraRetro, faCloud.faCloud, faComment.faComment, faCommentAlt.faCommentAlt, faHippo.faHippo, faFaceSmile.faFaceSmile, faCalendarDays.faCalendarDays, faPaperclip.faPaperclip, faFile.faFile, faFileAlt.faFileAlt, faShoppingCart.faShoppingCart, faClipboard.faClipboard, faFilter.faFilter, faCircleInfo.faCircleInfo, faCar.faCar, faGhost.faGhost, faAppleAlt.faAppleAlt, faCircleUser.faCircleUser, faPen.faPen, faUmbrella.faUmbrella, faGift.faGift, faFilm.faFilm, faList.faList, faGear.faGear, faTrash.faTrash, faCircleUp.faCircleUp, faCircleDown.faCircleDown, faRotateRight.faRotateRight, faBookmark.faBookmark, faPrint.faPrint, faCamera.faCamera, faMinus.faMinus, faShare.faShare, faFire.faFire, faPlane.faPlane, faMagnet.faMagnet, faHand.faHand, faFolder.faFolder, faFolderOpen.faFolderOpen, faMoneyBill.faMoneyBill, faThumbsUp.faThumbsUp, faThumbsDown.faThumbsDown, faComments.faComments, faLemon.faLemon, faKey.faKey, faPaperPlane.faPaperPlane, faCode.faCode, faGlobe.faGlobe, faTruck.faTruck, faCity.faCity, faTicket.faTicket, faTree.faTree, faWifi.faWifi, faBicycle.faBicycle, faSliders.faSliders, faBrush.faBrush, faHashtag.faHashtag, faFlask.faFlask, faCompass.faCompass, faDumpsterFire.faDumpsterFire, faPerson.faPerson, faPersonDress.faPersonDress, faAddressBook.faAddressBook, faBath.faBath, faHandshake.faHandshake, faEarthAmericas.faEarthAmericas, faGamepad.faGamepad, faFeather.faFeather, faSun.faSun, faLink.faLink, faPenFancy.faPenFancy, faFish.faFish, faBug.faBug, faShop.faShop, faMugSaucer.faMugSaucer, faShirt.faShirt, faAnchor.faAnchor, faBagShopping.faBagShopping, faGauge.faGauge, faUserSecret.faUserSecret, faStethoscope.faStethoscope, faCarSide.faCarSide, faHandHoldingHeart.faHandHoldingHeart, faLocationPin.faLocationPin, faInfo.faInfo, faCross.faCross, faCreditCard.faCreditCard, faDatabase.faDatabase, faCopy.faCopy, faMobile.faMobile, faHourglass.faHourglass, faNewspaper.faNewspaper, faTable.faTable, faBuilding.faBuilding, faStore.faStore, faFlag.faFlag, faNetworkWired.faNetworkWired, faShield.faShield, faAddressCard.faAddressCard, faServer.faServer, faUserNurse.faUserNurse, faUserNinja.faUserNinja, faSchool.faSchool, faFileInvoice.faFileInvoice, faRocket.faRocket, faLaptop.faLaptop, faRestroom.faRestroom, faPowerOff.faPowerOff, faSitemap.faSitemap, faDesktop.faDesktop, faMoon.faMoon, faCalendarWeek.faCalendarWeek, faPause.faPause, faLanguage.faLanguage, faDoorOpen.faDoorOpen, faHotel.faHotel, faShower.faShower, faPlaceOfWorship.faPlaceOfWorship, faWallet.faWallet, faToggleOn.faToggleOn, faToggleOff.faToggleOff, faMotorcycle.faMotorcycle, faTrain.faTrain, faWrench.faWrench, faMicrochip.faMicrochip, faTrophy.faTrophy, faHospital.faHospital, faHammer.faHammer, faRobot.faRobot, faFileContract.faFileContract, faCrown.faCrown, faVirus.faVirus, faRepeat.faRepeat, faCube.faCube, faMedal.faMedal, faBullseye.faBullseye, faRadio.faRadio, faRoute.faRoute, faPlug.faPlug, faCalculator.faCalculator, faCertificate.faCertificate, faRoad.faRoad, faUserTie.faUserTie, faTruckMonster.faTruckMonster, faWarehouse.faWarehouse, faRuler.faRuler, faSoap.faSoap, faScroll.faScroll, faCoins.faCoins, faLightbulb.faLightbulb, faKeyboard.faKeyboard, faEraser.faEraser, faUnlock.faUnlock, faTablet.faTablet, faGlasses.faGlasses, faImages.faImages, faWandMagic.faWandMagic, faVest.faVest, faUtensils.faUtensils, faUserGraduate.faUserGraduate, faUserDoctor.faUserDoctor, faTv.faTv, faTooth.faTooth, faToolbox.faToolbox, faToiletPaper.faToiletPaper, faSocks.faSocks, faSignsPost.faSignsPost, faScrewdriverWrench.faScrewdriverWrench, faScrewdriver.faScrewdriver, faScissors.faScissors, faScaleBalanced.faScaleBalanced, faSackDollar.faSackDollar, faPizzaSlice.faPizzaSlice, faPaw.faPaw, faPanorama.faPanorama, faMoneyBill.faMoneyBill, faMessage.faMessage, faMapLocation.faMapLocation, faIceCream.faIceCream, faGlassWater.faGlassWater, faGasPump.faGasPump, faGaugeHigh.faGaugeHigh, faFaceAngry.faFaceAngry, faFaceSmileBeam.faFaceSmileBeam, faFaceKissBeam.faFaceKissBeam, faDog.faDog, faCubes.faCubes, faCouch.faCouch, faChildren.faChildren, faChartLine.faChartLine, faBurger.faBurger, faBullhorn.faBullhorn, faBucket.faBucket, faBroom.faBroom, faBreadSlice.faBreadSlice, faBoxesStacked.faBoxesStacked, faBoxOpen.faBoxOpen, faBowlingBall.faBowlingBall, faBowlRice.faBowlRice, faBottleWater.faBottleWater, faBookOpenReader.faBookOpenReader, faBookOpen.faBookOpen, faBone.faBone, faBan.faBan);
 };
@@ -1365,6 +1408,7 @@ exports.Image = Image;
 exports.PasswordField = PasswordField;
 exports.Row = Row;
 exports.RowCol = RowCol;
+exports.SwitchField = SwitchField;
 exports.Text = Text;
 exports.TextField = TextField;
 exports.Title = Title;
